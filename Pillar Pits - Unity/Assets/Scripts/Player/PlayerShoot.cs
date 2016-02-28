@@ -1,16 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerShoot : ShootingClass {
 
+    [Header("ParticleSystem")]
+    public ParticleSystem gunSystem;
+
+    [Header("Bullets")]
+    public GameObject bulletPrefab;
+    [SerializeField] private int numOfBulletsToSpawn;
+    private List<GameObject> pooledBullets;
+    public Transform gunMuzzle;
+
     void Start()
     {
-        LevelUIManager.instance.UpdateTotalAmmo(currentTotalAmmo);
+        LevelManager.InitaliseLevel += Init;
+
+        PoolBullets();
     }
 
+    //Initilise the ammount of ammo the user has
     void Init()
     {
+        ResetManager.ResetLevel += Init;
 
+        currentClipAmmo = LevelManager.instance.levelAttributes.startingClipAmmo;
+        currentTotalAmmo = LevelManager.instance.levelAttributes.totalStartingAmmo;
+
+        LevelUIManager.instance.UpdateTotalAmmo(currentTotalAmmo);
+        LevelUIManager.instance.InitialiseNumberOfBullets(currentClipAmmo);
+    }
+
+    void PoolBullets()
+    {
+        pooledBullets = new List<GameObject>();
+
+        for(int i = 0; i < numOfBulletsToSpawn; i++)
+        {
+            GameObject _bullet = Instantiate(bulletPrefab) as GameObject;
+            _bullet.SetActive(false);
+            pooledBullets.Add(_bullet);
+        }
     }
 	
 	// Update is called once per frame
@@ -49,6 +80,10 @@ public class PlayerShoot : ShootingClass {
                 //Determine how many bullets are needed
                 int numOfBulletsToReload = maxClipSize - currentClipAmmo;
                 isReloading = true;
+
+                //Turn Off Reticle
+                LevelUIManager.instance.SetReticleState();
+
                 //Play Reloading Animation
                 SetAnimationState("isReloading");
                 StartCoroutine(PlaceAmmo(numOfBulletsToReload));
@@ -69,9 +104,7 @@ public class PlayerShoot : ShootingClass {
                 LevelUIManager.instance.TurnOnBulletIcons(_currentClip);
 
                 currentTotalAmmo--;
-                LevelUIManager.instance.UpdateTotalAmmo(currentTotalAmmo);
-
-             
+                LevelUIManager.instance.UpdateTotalAmmo(currentTotalAmmo);             
             }
             else
             {
@@ -84,6 +117,9 @@ public class PlayerShoot : ShootingClass {
 
         isReloading = false;
 
+        //Turn On Reticle
+        LevelUIManager.instance.SetReticleState();
+
         //Return To Idle Animation
         SetAnimationState("isIdle");
     }
@@ -92,6 +128,11 @@ public class PlayerShoot : ShootingClass {
     {
         //Play Shooting Animation
         SetAnimationState("isShooting");
+        
+        //Particle System
+        gunSystem.Play();
+        ParticleSystem.EmissionModule _em = gunSystem.emission;
+        _em.enabled = true;
 
         //Remove Ammo
         DecreaseAmmoCount();
@@ -106,6 +147,19 @@ public class PlayerShoot : ShootingClass {
         //Send Out Ray Cast From the Middle Of the Screen
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
+        //Send Out Bullet
+        for(int i = 0; i < pooledBullets.Count; i++)
+        {
+            if (!pooledBullets[i].activeInHierarchy)
+            {
+                //pooledBullets[i].transform.parent = gunMuzzle;
+                pooledBullets[i].transform.position = gunMuzzle.position;
+                pooledBullets[i].transform.localRotation = gunMuzzle.rotation;               
+                pooledBullets[i].SetActive(true);
+                break;
+            }
+        }
+
         RaycastHit hit;
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity))
@@ -114,6 +168,17 @@ public class PlayerShoot : ShootingClass {
         }
 
         StartCoroutine(ReturnToIdle());
+
+        StartCoroutine(TurnOffParticleSystem(_em));
+    }
+
+    IEnumerator TurnOffParticleSystem(ParticleSystem.EmissionModule _em)
+    {
+        yield return new WaitForSeconds(0.15f);
+        //Stop Particle System
+        _em.enabled = false;
+        gunSystem.Stop();
+
     }
 
     IEnumerator ReturnToIdle()
