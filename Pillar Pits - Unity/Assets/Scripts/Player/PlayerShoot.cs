@@ -13,6 +13,12 @@ public class PlayerShoot : ShootingClass {
     private List<GameObject> pooledBullets;
     public Transform gunMuzzle;
 
+    [Header("Melee")]
+    [SerializeField] private float meleeRange;
+    [SerializeField] private float meleeCoolDownTime;
+    private float meleeCoolDown;
+
+
     void Start()
     {
         LevelManager.InitaliseLevel += Init;
@@ -65,9 +71,50 @@ public class PlayerShoot : ShootingClass {
         {
             //Check that the actor isn't shooting
             if(CooldownCheck())
+
                 Reload();            
         }
+
+        if (Input.GetMouseButtonDown(2))
+        {
+            if (!isReloading && CooldownCheck())
+            {
+                if (meleeCoolDown < Time.time)
+                    StartCoroutine(Melee());
+            }
+            
+        }
 	}
+
+     IEnumerator Melee()
+    {
+        SetAnimationState("isHitting");
+        yield return new WaitForSeconds(0.3f);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, meleeRange);
+        for(int i = 0; i < hitColliders.Length; i++)
+        {
+            if(hitColliders[i].GetComponent<Renderer>())
+                if(hitColliders[i].GetComponent<Renderer>().isVisible)
+                    hitColliders[i].gameObject.SendMessage("Hit", 100, SendMessageOptions.DontRequireReceiver);
+        }
+        yield return new WaitForSeconds(0.6f);
+        meleeCoolDown += meleeCoolDownTime;
+        SetAnimationState("isIdle");
+
+        //RaycastHit hit;
+        //Ray ray = new Ray(transform.position, transform.forward * 1000);
+        //Debug.DrawRay(transform.position,transform.forward * 1000, Color.green);   
+        //if (Physics.Raycast(ray, out hit, 1000))
+        //{
+        //    Debug.Log(hit.transform.name);
+        //    float _distance = Vector3.Distance(hit.transform.position, transform.position);
+        //    Debug.Log(_distance);
+        //    if(_distance < 5)
+        //    {
+        //        hit.transform.SendMessage("Hit", 100, SendMessageOptions.DontRequireReceiver);
+        //    }
+        //}
+    }
 
     public override void Reload()
     {
