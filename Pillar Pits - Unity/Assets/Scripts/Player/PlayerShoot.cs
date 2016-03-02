@@ -53,6 +53,8 @@ public class PlayerShoot : ShootingClass {
 	// Update is called once per frame
 	void Update () {
 
+        CheckForTargets();
+
         if (Input.GetMouseButton(0))
         {
             //Check Ammo & Cooldown Time
@@ -85,6 +87,27 @@ public class PlayerShoot : ShootingClass {
             
         }
 	}
+
+    void CheckForTargets()
+    {
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit; 
+        if(Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            if (hit.collider.tag == "Target")
+            {
+                LevelUIManager.instance.TurnReticleRed();
+            }
+            else
+            {
+                LevelUIManager.instance.TurnReticleWhite();
+            }                
+        }
+        else
+        {
+            LevelUIManager.instance.TurnReticleWhite();
+        }
+    }
 
      IEnumerator Melee()
     {

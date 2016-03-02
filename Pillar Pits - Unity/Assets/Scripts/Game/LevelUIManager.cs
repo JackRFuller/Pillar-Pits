@@ -18,6 +18,7 @@ public class LevelUIManager : MonoBehaviour {
 
     [Header("Reticle")]
     public Image reticleIcon;
+    private bool isReticleRed;
 
     [Header("LevelOverUI")]
     public Animator levelOverAnim;
@@ -84,6 +85,18 @@ public class LevelUIManager : MonoBehaviour {
         {
             targetIconImages[i].enabled = true;
         }
+    }
+
+    public void TurnReticleRed()
+    {
+        if (reticleIcon.color != Color.red)
+               reticleIcon.color = Color.red;
+    }
+
+    public void TurnReticleWhite()
+    {
+        if (reticleIcon.color != Color.white)
+            reticleIcon.color = Color.white;
     }
 
     public void InitialiseNumberOfBullets(int _numberOfBullets)
