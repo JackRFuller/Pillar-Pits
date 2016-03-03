@@ -152,7 +152,7 @@ public class PlayerShoot : ShootingClass {
                 isReloading = true;
 
                 //Turn Off Reticle
-                LevelUIManager.instance.SetReticleState();
+                LevelUIManager.instance.TurnOffReticle();
 
                 //Play Reloading Animation
                 SetAnimationState("isReloading");
@@ -188,7 +188,7 @@ public class PlayerShoot : ShootingClass {
         isReloading = false;
 
         //Turn On Reticle
-        LevelUIManager.instance.SetReticleState();
+        LevelUIManager.instance.TurnOnReticle();
 
         //Return To Idle Animation
         SetAnimationState("isIdle");

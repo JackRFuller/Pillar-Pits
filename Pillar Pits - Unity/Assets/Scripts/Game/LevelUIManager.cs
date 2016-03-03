@@ -45,6 +45,7 @@ public class LevelUIManager : MonoBehaviour {
     void Start()
     {
         ResetManager.ResetLevel += ResetLevelOverUI;
+        
     }
 
     public void TurnOffLoadScreen()
@@ -119,13 +120,23 @@ public class LevelUIManager : MonoBehaviour {
         else reticleIcon.enabled = true;
     }
 
+    public void TurnOffReticle()
+    {
+        reticleIcon.enabled = false;
+    }
+
+    public void TurnOnReticle()
+    {
+        reticleIcon.enabled = true;
+    }
+
     public void SetupLevelOverUI(float _currentTime)
     {
         //Turn On UI
         levelOverAnim.transform.parent.root.gameObject.SetActive(true);
 
         //Turn Off Reticle
-        SetReticleState();
+        TurnOffReticle();
 
         //Set Current Time
         currentTimeText.text = _currentTime.ToString("F2");
@@ -157,6 +168,8 @@ public class LevelUIManager : MonoBehaviour {
     {
         //Turn On UI
         levelOverAnim.transform.parent.root.gameObject.SetActive(false);
+
+        TurnOnReticle();
 
         if(levelOverAnim)
             levelOverAnim.SetBool("isShowingMenu", false);
