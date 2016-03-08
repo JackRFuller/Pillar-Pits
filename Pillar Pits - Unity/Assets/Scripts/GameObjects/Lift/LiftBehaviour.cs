@@ -32,8 +32,9 @@ public class LiftBehaviour : MonoBehaviour
 
     void Init()
     {
+        ResetManager.ResetLevel += Init;
         transform.position = startingPos;
-        Activate();
+        isMoving = false;
     }
 
     void Activate()
