@@ -17,16 +17,38 @@ public class Hookshot : MonoBehaviour {
         cooldownTime = Time.time;
 	
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    void Update()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
-            if(Time.time > cooldownTime)
+            if (Time.time > cooldownTime && !isMoving)
                 ShootHookShot();
         }
-	}
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            isMoving = false;
+            rb.velocity = Vector3.zero;
+        }
+    }
+	
+	// Update is called once per frame
+	void FixedUpdate ()
+    {       
+
+        if (isMoving)
+        {
+            rb.AddForce((hitPoint - transform.position) * 2, ForceMode.Acceleration);
+            float _dist = Vector3.Distance(hitPoint, transform.position);
+
+            if (_dist < 7)
+            {
+                isMoving = false;
+                rb.velocity = Vector3.zero;
+            }
+        }
+    }
 
     void ShootHookShot()
     {
@@ -43,14 +65,6 @@ public class Hookshot : MonoBehaviour {
             rb.velocity = Vector3.zero;
             cooldownTime = Time.time + hookshotCoolDown;
             Debug.Log("Success");
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (isMoving)
-        {
-            rb.AddForce(hitPoint * 10000);
         }
     }
 }
