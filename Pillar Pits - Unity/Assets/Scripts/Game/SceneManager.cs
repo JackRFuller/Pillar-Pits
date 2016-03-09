@@ -4,22 +4,20 @@ using System.Collections;
 
 public class SceneManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+    public GameObject PC;
+    public static SceneManager instance;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        ResetScene();
-    }
-
-    void ResetScene()
-    {
-        if (Input.GetKey(KeyCode.R))
+        if(instance == null)
         {
-             Application.LoadLevel(Application.loadedLevel);
+            instance = this;
+        }
+        else if(instance != null)
+        {
+            Destroy(gameObject);
         }
     }
+
+	
 }
