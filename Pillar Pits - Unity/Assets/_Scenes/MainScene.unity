@@ -1027,6 +1027,14 @@ Prefab:
       value: 
       objectReference: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1,
         type: 2}
+    - target: {fileID: 11451130, guid: 82c1d39e6d1ce8f4c9673085f82e232f, type: 2}
+      propertyPath: movementSettings.JumpForce
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11451130, guid: 82c1d39e6d1ce8f4c9673085f82e232f, type: 2}
+      propertyPath: movementSettings.RunMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82c1d39e6d1ce8f4c9673085f82e232f, type: 2}
   m_IsPrefabParent: 0
