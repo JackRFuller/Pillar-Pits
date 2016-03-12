@@ -12,7 +12,7 @@ public class PlayerSetup : MonoBehaviour {
 	void Init()
     {
         ResetManager.ResetLevel += Init;
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //GetComponent<Rigidbody>().velocity = Vector3.zero;
         transform.GetChild(0).localRotation = Quaternion.Euler(Vector3.zero);
 
         transform.position = LevelManager.instance.levelAttributes.startingPlayerPos;

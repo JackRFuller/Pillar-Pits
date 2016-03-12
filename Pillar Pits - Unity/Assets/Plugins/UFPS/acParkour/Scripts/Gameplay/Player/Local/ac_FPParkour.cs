@@ -272,7 +272,7 @@ public class ac_FPParkour : vp_Component
 		UpdateWallrunTilt();
 
 		// limit groundsliding based on speed and duration
-		UpdateGroundSliding();
+		//UpdateGroundSliding();
 
 		// update dash cooldown and dash regen
 		UpdateDash();

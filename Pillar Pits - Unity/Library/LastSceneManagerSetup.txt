@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Plugins/UFPS/acParkour/Content/Levels/VRTraining.unity
+- path: Assets/_Scenes/CharacterMovement.unity
   isLoaded: 1
   isActive: 1

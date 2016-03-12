@@ -125,7 +125,7 @@ public class LevelManager : MonoBehaviour
         currentTargets = levelAttributes.startingNumberOfTargets;
         levelTimer = 0;       
 
-        //Gameplay Initilise
+        //Gameplay Initilise - Called by PC
         InitaliseLevel();
 
         //UI Elements

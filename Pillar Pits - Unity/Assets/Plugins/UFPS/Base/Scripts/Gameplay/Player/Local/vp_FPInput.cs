@@ -325,8 +325,8 @@ public class vp_FPInput : vp_Component
 	protected virtual void UpdatePause()
 	{
 
-		if (vp_Input.GetButtonDown("Pause"))
-			FPPlayer.Pause.Set(!FPPlayer.Pause.Get());
+		//if (vp_Input.GetButtonDown("Pause"))
+		//	FPPlayer.Pause.Set(!FPPlayer.Pause.Get());
 
 	}
 
