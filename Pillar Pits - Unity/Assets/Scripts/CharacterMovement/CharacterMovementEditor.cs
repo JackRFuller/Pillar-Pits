@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class CharacterMovementEditor : CharacterMovementUIElements {
 
@@ -12,8 +15,15 @@ public class CharacterMovementEditor : CharacterMovementUIElements {
     public ac_FPParkour parkourScript;
 
     private Slider activeSlider;
+    public GameObject SavingAndLoading;
 
+    private enum menuMode
+    {
+        save,
+        load,
+    }
 
+    private menuMode currentMenuMode;
 
     void Start()
     {
@@ -21,8 +31,6 @@ public class CharacterMovementEditor : CharacterMovementUIElements {
 
         SetSliderValues();
     }
-
-
 
     #region Motor
 
@@ -257,6 +265,11 @@ public class CharacterMovementEditor : CharacterMovementUIElements {
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             switch (FPPlayer.Pause.Get())
@@ -331,23 +344,23 @@ public class CharacterMovementEditor : CharacterMovementUIElements {
 
     void SetTextValues()
     {
-       motorAcceleration.text = sliderMotorAcceleration.value.ToString("F2");
-       motorDamping.text = slidermotorDamping.value.ToString("F2");
-       motorbackwardsSpeed.text = slidermotorbackwardsSpeed.value.ToString("F2");
-       motorAirSpeed.text = slidermotorAirSpeed.value.ToString("F2");
-       motorSlopeSpeedUp.text = slidermotorSlopeSpeedUp.value.ToString("F2");
-       motorSlopeSpeedDown.text = slidermotorSlopeSpeedDown.value.ToString("F2");
+        motorAcceleration.text = sliderMotorAcceleration.value.ToString("F2");
+        motorDamping.text = slidermotorDamping.value.ToString("F2");
+        motorbackwardsSpeed.text = slidermotorbackwardsSpeed.value.ToString("F2");
+        motorAirSpeed.text = slidermotorAirSpeed.value.ToString("F2");
+        motorSlopeSpeedUp.text = slidermotorSlopeSpeedUp.value.ToString("F2");
+        motorSlopeSpeedDown.text = slidermotorSlopeSpeedDown.value.ToString("F2");
 
-       jumpingForce.text = sliderjumpingForce.value.ToString("F2");
-       jumpingforceDamping.text = sliderjumpingforceDamping.value.ToString("F2");
-       jumpingForceHold.text = sliderjumpingForceHold.value.ToString("F2");
-       jumpingForceHoldDamping.text = sliderjumpingForceHoldDamping.value.ToString("F2");
+        jumpingForce.text = sliderjumpingForce.value.ToString("F2");
+        jumpingforceDamping.text = sliderjumpingforceDamping.value.ToString("F2");
+        jumpingForceHold.text = sliderjumpingForceHold.value.ToString("F2");
+        jumpingForceHoldDamping.text = sliderjumpingForceHoldDamping.value.ToString("F2");
 
-       physicsForceDamping.text = sliderphysicsForceDamping.value.ToString("F2");
-       physicsPushForce.text = sliderphysicsPushForce.value.ToString("F2");
-       physicsGravityMod.text = sliderphysicsGravityMod.value.ToString("F2");
-       physicsWallBounce.text = sliderphysicsWallBounce.value.ToString("F2");
-       physicsWallFriction.text = sliderphysicsWallFriction.value.ToString("F2");
+        physicsForceDamping.text = sliderphysicsForceDamping.value.ToString("F2");
+        physicsPushForce.text = sliderphysicsPushForce.value.ToString("F2");
+        physicsGravityMod.text = sliderphysicsGravityMod.value.ToString("F2");
+        physicsWallBounce.text = sliderphysicsWallBounce.value.ToString("F2");
+        physicsWallFriction.text = sliderphysicsWallFriction.value.ToString("F2");
 
         //Parkour
 
@@ -372,7 +385,190 @@ public class CharacterMovementEditor : CharacterMovementUIElements {
         wallHangLostGripStart.text = sliderwallHangLostGripStart.value.ToString("F2");
         wallHangLostGripGravity.text = sliderwallHangLostGripGravity.value.ToString("F2");
 
-        }
+    }
 
     #endregion
+
+    public void SaveAndLoadState(string _menuState)
+    {
+        if(_menuState == "Save")
+        {
+            currentMenuMode = menuMode.save;
+        }
+
+        if(_menuState == "Load")
+        {
+            currentMenuMode = menuMode.load;
+        }
+
+        SavingAndLoading.SetActive(true);
+    }
+
+    public void DetermineWhetherSaveOrLoad(Text _text)
+    {
+        string _fileName = _text.text;
+
+        if (currentMenuMode == menuMode.save)
+        {
+            SaveValues(_fileName);
+        }
+
+        if (currentMenuMode == menuMode.load)
+        {
+            Load(_fileName);
+        }
+
+        SavingAndLoading.SetActive(false);
+
+        _text.text = "";
+
+        Debug.Log(_fileName);
+    }
+
+    public void SaveValues(string _fileName)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.dataPath + "\\" + _fileName + ".dat");
+        //FileStream file = File.Create(Application.persistentDataPath + "/" + _fileName + ".dat");
+
+        CharacterMovementValues data = new CharacterMovementValues();
+
+        data.motorAcceleration = movementScript.MotorAcceleration;
+        data.motorDamping = movementScript.MotorDamping;
+        data.motorbackwardsSpeed = movementScript.MotorBackwardsSpeed;
+        data.motorSlopeSpeedUp = movementScript.MotorSlopeSpeedUp;
+        data.motorSlopeSpeedDown = movementScript.MotorSlopeSpeedDown;
+
+        data.jumpingForce = movementScript.MotorJumpForce;
+        data.jumpingforceDamping = movementScript.MotorJumpForceDamping;
+        data.jumpingForceHold = movementScript.MotorJumpForceHold;
+        data.jumpingForceHoldDamping = movementScript.MotorJumpForceHoldDamping;
+
+        data.physicsForceDamping = movementScript.PhysicsForceDamping;
+        data.physicsPushForce = movementScript.PhysicsPushForce;
+        data.physicsGravityMod = movementScript.PhysicsGravityModifier;
+        data.physicsWallBounce = movementScript.PhysicsWallBounce;
+        data.physicsWallFriction = movementScript.PhysicsWallFriction;
+
+        data.doubleJumpCount = parkourScript.DoubleJumpCount;
+        data.doubleJumpForce = parkourScript.DoubleJumpForce;
+        data.doubleJumpMomentumForce = parkourScript.DoubleJumpForwardForce;
+
+        data.wallRunDuration = parkourScript.WallRunDuration;
+        data.wallRunGravity = parkourScript.WallRunGravity;
+        data.wallRunMinSpeed = parkourScript.WallRunSpeedMinimum;
+        data.WallRunCooldown = parkourScript.WallRunAgainTimeout;
+        data.WallRunUpForceText = parkourScript.WallRunUpForce;
+        data.wallRunDismountForce = parkourScript.WallRunDismountForce;
+        data.wallRunCameraTilt = parkourScript.WallRunTilt;
+        data.wallrunRange = parkourScript.WallRunRange;
+
+        data.wallJumpUpForce = parkourScript.WallJumpForce;
+        data.wallJumpWallForce = parkourScript.WallJumpForce;
+        data.wallJumpForwardForce = parkourScript.WallJumpForwardForce;
+
+        data.wallHangDuration = parkourScript.WallHangDuration;
+        data.wallHangLostGripStart = parkourScript.LosingGripStart;
+        data.wallHangLostGripGravity = parkourScript.LosingGripGravity;
+
+        bf.Serialize(file, data);
+        file.Close();
+    }
+
+    public void Load(string _fileName)
+    {
+        if(File.Exists(Application.dataPath + "\\" + _fileName + ".dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.dataPath + "\\" + _fileName + ".dat", FileMode.Open);
+            //FileStream file = File.Open(Application.persistentDataPath + "/" + _fileName + ".dat", FileMode.Open);
+            CharacterMovementValues data = (CharacterMovementValues)bf.Deserialize(file);
+            file.Close();
+
+            movementScript.MotorAcceleration = data.motorAcceleration;
+            movementScript.MotorDamping = data.motorDamping;
+            movementScript.MotorBackwardsSpeed = data.motorbackwardsSpeed;
+            movementScript.MotorAirSpeed = data.motorAirSpeed;
+            movementScript.MotorSlopeSpeedUp = data.motorSlopeSpeedUp;
+            movementScript.MotorSlopeSpeedDown = data.motorSlopeSpeedDown;
+
+            movementScript.MotorJumpForce = data.jumpingForce;
+            movementScript.MotorJumpForceDamping = data.jumpingforceDamping;
+            movementScript.MotorJumpForceHold = data.jumpingForceHold;
+            movementScript.MotorJumpForceHoldDamping = data.jumpingForceHoldDamping;
+
+            movementScript.PhysicsForceDamping = data.physicsForceDamping;
+            movementScript.PhysicsPushForce = data.physicsPushForce;
+            movementScript.PhysicsGravityModifier = data.physicsGravityMod;
+            movementScript.PhysicsWallBounce = data.physicsWallBounce;
+            movementScript.PhysicsWallFriction = data.physicsWallFriction;
+
+            parkourScript.DoubleJumpCount = (int)data.doubleJumpCount;
+            parkourScript.DoubleJumpForce = data.doubleJumpForce;
+            parkourScript.DoubleJumpForwardForce = data.doubleJumpMomentumForce;
+
+            parkourScript.WallRunDuration = data.wallRunDuration;
+            parkourScript.WallRunGravity = data.wallRunGravity;
+            parkourScript.WallRunSpeedMinimum = data.wallRunMinSpeed;
+            parkourScript.WallRunAgainTimeout = data.WallRunCooldown;
+            parkourScript.WallRunUpForce = data.WallRunUpForceText;
+            parkourScript.WallRunDismountForce = data.wallRunDismountForce;
+            parkourScript.WallRunTilt = data.wallRunCameraTilt;
+            parkourScript.WallRunRange = data.wallrunRange;
+
+            parkourScript.WallJumpUpForce = data.wallJumpUpForce;
+            parkourScript.WallJumpForce = data.wallJumpWallForce;
+            parkourScript.WallJumpForwardForce = data.wallJumpForwardForce;
+
+            parkourScript.WallHangDuration = data.wallHangDuration;
+            parkourScript.LosingGripStart = data.wallHangLostGripStart;
+            parkourScript.LosingGripGravity = data.wallHangLostGripGravity;
+            Debug.Log("Success");
+
+            SetSliderValues();
+        }
+    }
+
+    [Serializable]
+    class CharacterMovementValues
+    {
+        public float motorAcceleration;
+        public float motorDamping;
+        public float motorbackwardsSpeed;
+        public float motorAirSpeed;
+        public float motorSlopeSpeedUp;
+        public float motorSlopeSpeedDown;
+
+        public float jumpingForce;
+        public float jumpingforceDamping;
+        public float jumpingForceHold;
+        public float jumpingForceHoldDamping;
+
+        public float physicsForceDamping;
+        public float physicsPushForce;
+        public float physicsGravityMod;
+        public float physicsWallBounce;
+        public float physicsWallFriction;
+
+        public float doubleJumpCount;
+        public float doubleJumpForce;
+        public float doubleJumpMomentumForce;
+
+        public float wallRunDuration;
+        public float wallRunGravity;
+        public float wallRunMinSpeed;
+        public float WallRunCooldown;
+        public float WallRunUpForceText;
+        public float wallRunDismountForce;
+        public float wallRunCameraTilt;
+        public float wallrunRange;
+
+        public float wallJumpUpForce;
+        public float wallJumpWallForce;
+        public float wallJumpForwardForce;
+
+        public float wallHangDuration;
+        public float wallHangLostGripStart;
+        public float wallHangLostGripGravity;
+     }
 }
