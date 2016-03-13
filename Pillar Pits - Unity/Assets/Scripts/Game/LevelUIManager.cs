@@ -174,12 +174,17 @@ public class LevelUIManager : MonoBehaviour {
         if(levelOverAnim)
             levelOverAnim.SetBool("isShowingMenu", false);
         levelOverAnim.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(1, 1080);
-        for(int i = 0; i < starIcons.Length; i++)
-        {
-            starIcons[i].enabled = false;
-        }
+        ResetStars(starIcons);
 
         timeToNextStarText.enabled = false;
+    }
+
+    void ResetStars(Image[] _starIcons)
+    {
+        for (int i = 0; i < _starIcons.Length; i++)
+        {
+            _starIcons[i].enabled = false;
+        }
     }
 
     

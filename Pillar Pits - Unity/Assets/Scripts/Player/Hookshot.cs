@@ -13,8 +13,14 @@ public class Hookshot : MonoBehaviour {
     [Header("Hookshot Attributes")]
     [SerializeField] private float hookshotSpeed;
     [SerializeField] private float hookshotModifier;   
-    private Vector3 target;   
-   
+    [SerializeField] private float timeTakenToExtendHookshot;
+    private Vector3 target;
+
+    //Lerping Attributes
+    private bool isLerping;
+    private float timeStartedLerping;
+    private Vector3 startPos;
+    private Vector3 endPos;
 
     //Character Attributes
     private CharacterController cc;
@@ -35,13 +41,31 @@ public class Hookshot : MonoBehaviour {
 
         if (isMoving)
             MoveTowardsTarget();
+
+        if (isLerping)
+            LerpHookShot();
+    }
+
+    void LerpHookShot()
+    {
+        float _timeSinceStarted = Time.time - timeStartedLerping;
+        float _percentageComplete = _timeSinceStarted / timeTakenToExtendHookshot;
+        Vector3 _hookshotLine = Vector3.Lerp(startPos, endPos, _percentageComplete);
+        lr.SetPosition(1, _hookshotLine);
+
+        if(_percentageComplete >= 1.0f)
+        {
+            isLerping = false;
+            isMoving = true;
+        }
+
     }
 
     void MoveTowardsTarget()
     {
         Vector3 _offset = target - transform.position;
         float speed = hookshotSpeed;
-        if (_offset.magnitude > .2f)
+        if (_offset.magnitude > .5f)
         {
             if (hasDoubleClicked)
             speed = hookshotSpeed * hookshotModifier;
@@ -97,13 +121,25 @@ public class Hookshot : MonoBehaviour {
             if(hit.collider)
             {
                 target = hit.point;
-                isMoving = true;
+                //isMoving = true;
 
                 if (_doubleClicked)
                     hasDoubleClicked = true;
                 else hasDoubleClicked = false;
+
+                SetUpHookshotLerp();
                  
             }
         }
+    }
+
+    void SetUpHookshotLerp()
+    {
+        lr.SetPosition(0, Vector3.zero);
+        lr.SetPosition(1, Vector3.zero);
+        timeStartedLerping = Time.time;
+        startPos = transform.position;
+        endPos = target;
+        isLerping = true;
     }
 }

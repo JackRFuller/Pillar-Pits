@@ -21,7 +21,7 @@ public class SwitchBehaviour : MonoBehaviour {
         {
             transform.GetChild(i).GetComponent<MeshRenderer>().material.color = Color.green;
         }
-    }
+    }    
 
 
 	void Hit(float _damage)
