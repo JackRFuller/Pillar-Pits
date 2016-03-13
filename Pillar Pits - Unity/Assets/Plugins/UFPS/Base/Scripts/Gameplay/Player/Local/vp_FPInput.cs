@@ -89,7 +89,7 @@ public class vp_FPInput : vp_Component
 	/// </summary>
 	protected override void Update()
 	{
-
+        
 		// manage input for GUI
 		UpdateCursorLock();
 
@@ -162,11 +162,12 @@ public class vp_FPInput : vp_Component
 	/// </summary>
 	protected virtual void InputRun()
 	{
+        FPPlayer.Run.TryStart();
 
-		if (vp_Input.GetButton("Run"))
-			FPPlayer.Run.TryStart();
-		else
-			FPPlayer.Run.TryStop();
+  //      if (vp_Input.GetButton("Run"))
+		//	FPPlayer.Run.TryStart();
+		//else
+		//	FPPlayer.Run.TryStop();
 
 	}
 

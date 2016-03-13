@@ -22,6 +22,7 @@ using System.Collections.Generic;
 
 public abstract class vp_Controller : vp_Component
 {
+    public bool isHookshotting = false;
 
 	// ground collision
 	public bool Grounded { get { return m_Grounded; } }
@@ -129,12 +130,14 @@ public abstract class vp_Controller : vp_Component
 	/// </summary>
 	protected override void Update()
 	{
+        
+            base.Update();
 
-		base.Update();
-
-		// platform rotation is done in Update rather than FixedUpdate for
-		// smooth remote player movement on platforms in multiplayer
-		UpdatePlatformRotation();
+            // platform rotation is done in Update rather than FixedUpdate for
+            // smooth remote player movement on platforms in multiplayer
+            UpdatePlatformRotation();
+        
+		
 
 	}
 
@@ -144,25 +147,25 @@ public abstract class vp_Controller : vp_Component
 	/// </summary>
 	protected override void FixedUpdate()
 	{
+        
+            if (Time.timeScale == 0.0f)
+                return;
 
-		if (Time.timeScale == 0.0f)
-			return;
+            // updates external forces like gravity
+            UpdateForces();
 
-		// updates external forces like gravity
-		UpdateForces();
+            // update controller position based on current motor- & external forces
+            FixedMove();
 
-		// update controller position based on current motor- & external forces
-		FixedMove();
+            // respond to environment collisions that may have happened during the move
+            UpdateCollisions();
 
-		// respond to environment collisions that may have happened during the move
-		UpdateCollisions();
+            // move and rotate player along with rigidbodies & moving platforms
+            UpdatePlatformMove();
 
-		// move and rotate player along with rigidbodies & moving platforms
-		UpdatePlatformMove();
-
-		// store final position and velocity for next frame's physics calculations
-		UpdateVelocity();
-
+            // store final position and velocity for next frame's physics calculations
+            UpdateVelocity();
+        
 	}
 	
 
@@ -343,27 +346,29 @@ public abstract class vp_Controller : vp_Component
 	/// </summary>
 	protected virtual void UpdateForces()
 	{
+        
+            // store ground for detecting fall impact and loss of grounding this frame
+            m_LastGroundHitTransform = m_GroundHitTransform;
 
-		// store ground for detecting fall impact and loss of grounding this frame
-		m_LastGroundHitTransform = m_GroundHitTransform;
+            // accumulate gravity
+            if (m_Grounded && (m_FallSpeed <= 0.0f))
+            // when not falling, stick controller to the ground by a small, fixed gravity
+            {
+                m_FallSpeed = (Physics.gravity.y * (PhysicsGravityModifier * 0.002f) * vp_TimeUtility.AdjustedTimeScale);
+                return;
+            }
+            else
+            {
 
-		// accumulate gravity
-		if (m_Grounded && (m_FallSpeed <= 0.0f))
-		// when not falling, stick controller to the ground by a small, fixed gravity
-		{
-			m_FallSpeed = (Physics.gravity.y * (PhysicsGravityModifier * 0.002f) * vp_TimeUtility.AdjustedTimeScale);
-			return;
-		}
-		else
-		{
+                m_FallSpeed += (Physics.gravity.y * (PhysicsGravityModifier * 0.002f) * vp_TimeUtility.AdjustedTimeScale);
 
-			m_FallSpeed += (Physics.gravity.y * (PhysicsGravityModifier * 0.002f) * vp_TimeUtility.AdjustedTimeScale);
+                // detect starting to fall MID-JUMP (for fall impact)
+                if ((m_Velocity.y < 0) && (m_PrevVelocity.y >= 0.0f))
+                    SetFallHeight(Transform.position.y);
 
-			// detect starting to fall MID-JUMP (for fall impact)
-			if ((m_Velocity.y < 0) && (m_PrevVelocity.y >= 0.0f))
-				SetFallHeight(Transform.position.y);
-
-		}
+            
+        }
+		
 
 	}
 

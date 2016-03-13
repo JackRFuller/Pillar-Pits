@@ -20,6 +20,8 @@ using System.Collections.Generic;
 
 public class ac_FPParkour : vp_Component 
 {
+   
+
 	// anim
 	public GameObject ParkourArmPrefab = null ;					// parkour arm prefab that will be seen during ledgegrab
 	public AnimationClip ParkourArmClimbAnim = null;			// parkour's arm ledge climbing animation that will be played.
@@ -174,6 +176,8 @@ public class ac_FPParkour : vp_Component
 	public Vector3 LocalVelocity { get {return GetLocalVelocity(); } }
 	protected int m_LastWeaponEquipped = 0;						// cache last weapon equipped
 
+    public bool isHookShotting = true;
+
 	// Use this for initialization
 	protected override void  Awake () 
 	{
@@ -244,47 +248,56 @@ public class ac_FPParkour : vp_Component
 
 	protected override void Update()
 	{
-		base.Update();
+        if (isHookShotting)
+        {
+            base.Update();
 
-		// handles ledgegrab, walljump and doublejump input
-		InputJump();
+            // handles ledgegrab, walljump and doublejump input
+            InputJump();
+
+            // handles dash input
+            InputDash();
+
+            // handles ground slide input
+            InputGroundSlide();
+
+            // handles wallhang input
+            InputWallHang();
+        }
 		
-		// handles dash input
-		InputDash();
-		
-		// handles ground slide input
-		InputGroundSlide();
-		
-		// handles wallhang input
-		InputWallHang();
 
 	}
 
 	protected override void FixedUpdate()
 	{
-		// handle ledgegrab raycast and collision check
-		UpdateLedgeGrab();
+        if (isHookShotting)
+        {
+            // handle ledgegrab raycast and collision check
+            UpdateLedgeGrab();
 
-		// handle wallrun raycast and motion during wallrunning
-		UpdateWallrun();
+            // handle wallrun raycast and motion during wallrunning
+            UpdateWallrun();
 
-		// apply a camera Z tilt when wallrun
-		UpdateWallrunTilt();
+            // apply a camera Z tilt when wallrun
+            UpdateWallrunTilt();
 
-		// limit groundsliding based on speed and duration
-		//UpdateGroundSliding();
+            // limit groundsliding based on speed and duration
+            //UpdateGroundSliding();
 
-		// update dash cooldown and dash regen
-		UpdateDash();
+            // update dash cooldown and dash regen
+            UpdateDash();
 
-		// handles a parkour hanging before transitioning to parkour climb
-		UpdateLedgeHanging();
+            // handles a parkour hanging before transitioning to parkour climb
+            UpdateLedgeHanging();
 
-		// handles sticking to the wall
-		UpdateWallHang();
+            // handles sticking to the wall
+            UpdateWallHang();
 
-//		UpdatePhysics();
-	}
+            //		UpdatePhysics();
+        }
+
+
+    }
 	
 	/// <summary>
 	/// Takes controllercollider hit and convert to raycast 
@@ -1282,7 +1295,7 @@ public class ac_FPParkour : vp_Component
 		if(WallRunTilt == 0)
 			return;
 
-		print (WallAngle);
+		//print (WallAngle);
 
 		Vector3 localVelocity = GetLocalVelocity() * 0.016f ;
 
