@@ -1,6 +1,7 @@
 
 Shader "Hidden/EdgeDetect" { 
 	Properties {
+		_Color("Color", Color) = (1,1,1,1)
 		_MainTex ("Base (RGB)", 2D) = "" {}
 	}
 
@@ -188,6 +189,11 @@ Shader "Hidden/EdgeDetect" {
 		float Sobel = sqrt(SobelX * SobelX + SobelY * SobelY);
 
 		Sobel = 1.0-pow(saturate(Sobel), _Exponent);
+		
+		if (Sobel > 0)
+			return lerp(tex2D(_MainTex, i.uv[0].xy), _BgColor, _BgFade);
+		else
+			return _Color;
 		return Sobel * lerp(tex2D(_MainTex, i.uv[0].xy), _BgColor, _BgFade);
 	}
 
@@ -234,7 +240,11 @@ Shader "Hidden/EdgeDetect" {
 		float Sobel = sqrt(SobelX * SobelX + SobelY * SobelY);
 
 		Sobel = 1.0-pow(saturate(Sobel), _Exponent);
-		return Sobel * lerp(tex2D(_MainTex, i.uv[0].xy), _BgColor, _BgFade);
+		//return Sobel * lerp(tex2D(_MainTex, i.uv[0].xy), _BgColor, _BgFade);
+		if (Sobel > 0)
+			return lerp(tex2D(_MainTex, i.uv[0].xy), _BgColor, _BgFade);
+		else
+			return _Color;
 	}
 
 	half4 fragRobert(v2f i) : SV_Target {				
@@ -248,7 +258,12 @@ Shader "Hidden/EdgeDetect" {
 		edge *= CheckSame(sample1.xy, DecodeFloatRG(sample1.zw), sample2);
 		edge *= CheckSame(sample3.xy, DecodeFloatRG(sample3.zw), sample4);
 
-		return edge * lerp(tex2D(_MainTex, i.uv[0]), _BgColor, _BgFade);
+		//return edge * lerp(tex2D(_MainTex, i.uv[0]), _BgColor, _BgFade);
+
+		if (edge > 0)
+			return lerp(tex2D(_MainTex, i.uv[0].xy), _BgColor, _BgFade);
+		else
+			return _Color;
 	}
 	
 	half4 fragThin (v2f i) : SV_Target
@@ -269,7 +284,12 @@ Shader "Hidden/EdgeDetect" {
 		edge *= CheckSame(centerNormal, centerDepth, sample1);
 		edge *= CheckSame(centerNormal, centerDepth, sample2);
 			
-		return edge * lerp(original, _BgColor, _BgFade);
+		//return edge * lerp(original, _BgColor, _BgFade);
+
+		if (edge > 0)
+			return lerp(original, _BgColor, _BgFade);
+		else
+			return _Color;
 	}
 	
 	ENDCG 

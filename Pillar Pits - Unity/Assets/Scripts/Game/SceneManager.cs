@@ -19,5 +19,18 @@ public class SceneManager : MonoBehaviour {
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+    }
+
 	
 }

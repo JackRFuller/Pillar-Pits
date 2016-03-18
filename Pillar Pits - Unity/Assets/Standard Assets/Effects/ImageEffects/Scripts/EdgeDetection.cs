@@ -31,6 +31,8 @@ namespace UnityStandardAssets.ImageEffects
         private Material edgeDetectMaterial = null;
         private EdgeDetectMode oldMode = EdgeDetectMode.SobelDepthThin;
 
+        public Color edgesColor = Color.white;
+
 
         public override bool CheckResources ()
 		{
@@ -84,6 +86,9 @@ namespace UnityStandardAssets.ImageEffects
             edgeDetectMaterial.SetFloat ("_Threshold", lumThreshold);
 
             Graphics.Blit (source, destination, edgeDetectMaterial, (int) mode);
+
+            Vector4 edgeCol = edgesColor;
+            edgeDetectMaterial.SetVector("_Color", edgeCol);
         }
     }
 }

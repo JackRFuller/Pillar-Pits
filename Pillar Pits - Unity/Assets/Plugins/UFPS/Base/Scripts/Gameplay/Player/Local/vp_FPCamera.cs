@@ -208,36 +208,36 @@ public class vp_FPCamera : vp_Component
 	
 		// main camera initialization
 		// render everything except body and weapon
-		GetComponent<Camera>().cullingMask &= ~((1 << vp_Layer.LocalPlayer) | (1 << vp_Layer.Weapon));
-		GetComponent<Camera>().depth = 0;
+		//GetComponent<Camera>().cullingMask &= ~((1 << vp_Layer.LocalPlayer) | (1 << vp_Layer.Weapon));
+		//GetComponent<Camera>().depth = 0;
 
 		// weapon camera initialization
 		// find a regular Unity Camera component existing in a child
 		// gameobject to the FPSCamera's gameobject. if we don't find
 		// a weapon cam, that's OK (some games don't have weapons)
 		Camera weaponCam = null;
-		foreach (Transform t in Transform)
-		{
-			weaponCam = (Camera)t.GetComponent(typeof(Camera));
-			if (weaponCam != null)
-			{
-				weaponCam.transform.localPosition = Vector3.zero;
-				weaponCam.transform.localEulerAngles = Vector3.zero;
-				weaponCam.clearFlags = CameraClearFlags.Depth;
-				weaponCam.cullingMask = (1 << vp_Layer.Weapon);	// only render the weapon
-				weaponCam.depth = 1;
-				weaponCam.farClipPlane = 100;
-				weaponCam.nearClipPlane = 0.01f;
-				weaponCam.fieldOfView = 60;
-				break;
-			}
-		}
+        foreach (Transform t in Transform)
+        {
+            weaponCam = (Camera)t.GetComponent(typeof(Camera));
+            if (weaponCam != null)
+            {
+                weaponCam.transform.localPosition = Vector3.zero;
+                weaponCam.transform.localEulerAngles = Vector3.zero;
+                //weaponCam.clearFlags = CameraClearFlags.Depth;
+                //weaponCam.cullingMask = (1 << vp_Layer.Weapon); // only render the weapon
+                //weaponCam.depth = 1;
+                //weaponCam.farClipPlane = 100;
+                //weaponCam.nearClipPlane = 0.01f;
+                //weaponCam.fieldOfView = 60;
+                break;
+            }
+        }
 
-		// create springs for camera motion
+        // create springs for camera motion
 
-		// --- primary position spring ---
-		// this is used for all sorts of positional force acting on the camera
-		m_PositionSpring = new vp_Spring(Transform, vp_Spring.UpdateMode.Position, false);
+        // --- primary position spring ---
+        // this is used for all sorts of positional force acting on the camera
+        m_PositionSpring = new vp_Spring(Transform, vp_Spring.UpdateMode.Position, false);
 		m_PositionSpring.MinVelocity = 0.00001f;
 		m_PositionSpring.RestState = PositionOffset;
 

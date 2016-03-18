@@ -1,0 +1,328 @@
+-debug
+-target:library
+-nowarn:0169
+-out:Temp/Assembly-CSharp-firstpass.dll
+-r:"C:/Program Files/Unity 5.3.2/Editor/Data/Managed/UnityEngine.dll"
+-r:"C:/Program Files/Unity 5.3.2/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
+-r:"C:/Program Files/Unity 5.3.2/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
+-r:Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll
+-r:Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll
+-r:Assets/ProCore/ProBuilder/Classes/ClassesLib/KDTree.dll
+-r:"C:/Program Files/Unity 5.3.2/Editor/Data/Managed/UnityEditor.dll"
+-define:UNITY_5_3_3
+-define:UNITY_5_3
+-define:UNITY_5
+-define:ENABLE_NEW_BUGREPORTER
+-define:ENABLE_AUDIO
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_DUCK_TYPING
+-define:ENABLE_FRAME_DEBUGGER
+-define:ENABLE_GENERICS
+-define:ENABLE_HOME_SCREEN
+-define:ENABLE_IMAGEEFFECTS
+-define:ENABLE_LIGHT_PROBES_LEGACY
+-define:ENABLE_MICROPHONE
+-define:ENABLE_MULTIPLE_DISPLAYS
+-define:ENABLE_PHYSICS
+-define:ENABLE_PLUGIN_INSPECTOR
+-define:ENABLE_SHADOWS
+-define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
+-define:ENABLE_SPRITERENDERER_FLIPPING
+-define:ENABLE_SPRITES
+-define:ENABLE_SPRITE_POLYGON
+-define:ENABLE_TERRAIN
+-define:ENABLE_RAKNET
+-define:ENABLE_UNET
+-define:ENABLE_UNITYEVENTS
+-define:ENABLE_VR
+-define:ENABLE_WEBCAM
+-define:ENABLE_WWW
+-define:ENABLE_CLOUD_SERVICES
+-define:ENABLE_CLOUD_SERVICES_ADS
+-define:ENABLE_CLOUD_HUB
+-define:ENABLE_CLOUD_PROJECT_ID
+-define:ENABLE_CLOUD_SERVICES_PURCHASING
+-define:ENABLE_CLOUD_SERVICES_ANALYTICS
+-define:ENABLE_CLOUD_SERVICES_UNET
+-define:ENABLE_CLOUD_SERVICES_BUILD
+-define:ENABLE_CLOUD_LICENSE
+-define:ENABLE_EDITOR_METRICS
+-define:ENABLE_EDITOR_METRICS_CACHING
+-define:INCLUDE_DYNAMIC_GI
+-define:INCLUDE_GI
+-define:INCLUDE_IL2CPP
+-define:INCLUDE_DIRECTX12
+-define:PLATFORM_SUPPORTS_MONO
+-define:RENDER_SOFTWARE_CURSOR
+-define:ENABLE_LOCALIZATION
+-define:ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION
+-define:ENABLE_EDITOR_TESTS_RUNNER
+-define:UNITY_STANDALONE_WIN
+-define:UNITY_STANDALONE
+-define:ENABLE_SUBSTANCE
+-define:ENABLE_TEXTUREID_MAP
+-define:ENABLE_RUNTIME_GI
+-define:ENABLE_MOVIES
+-define:ENABLE_NETWORK
+-define:ENABLE_CRUNCH_TEXTURE_COMPRESSION
+-define:ENABLE_LOG_MIXED_STACKTRACE
+-define:ENABLE_UNITYWEBREQUEST
+-define:ENABLE_EVENT_QUEUE
+-define:ENABLE_CLUSTERINPUT
+-define:ENABLE_WEBSOCKET_HOST
+-define:ENABLE_MONO
+-define:ENABLE_PROFILER
+-define:DEBUG
+-define:TRACE
+-define:UNITY_ASSERTIONS
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_64
+-define:UNITY_EDITOR_WIN
+-define:CROSS_PLATFORM_INPUT
+Assets/Plugins/GSFU/Scripts/AdjustBalls.cs
+Assets/Plugins/GSFU/Scripts/BounceCounter.cs
+Assets/Plugins/GSFU/Scripts/LitJson/IJsonWrapper.cs
+Assets/Plugins/GSFU/Scripts/LitJson/JsonData.cs
+Assets/Plugins/GSFU/Scripts/LitJson/JsonException.cs
+Assets/Plugins/GSFU/Scripts/LitJson/JsonMapper.cs
+Assets/Plugins/GSFU/Scripts/LitJson/JsonMockWrapper.cs
+Assets/Plugins/GSFU/Scripts/LitJson/JsonReader.cs
+Assets/Plugins/GSFU/Scripts/LitJson/JsonWriter.cs
+Assets/Plugins/GSFU/Scripts/LitJson/Lexer.cs
+Assets/Plugins/GSFU/Scripts/LitJson/ParserToken.cs
+Assets/Plugins/GSFU/Scripts/UnityDataConnector.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Attributes/vp_FloatFieldAttribute.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Attributes/vp_HelpBoxAttribute.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Attributes/vp_ItemAmountAttribute.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Attributes/vp_ItemIDAttribute.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Attributes/vp_ItemTypeAttribute.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Attributes/vp_PropertyDrawerUtility.cs.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Attributes/vp_SeparatorAttribute.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/ComponentSystem/vp_Component.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/ComponentSystem/vp_ComponentPreset.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/ComponentSystem/vp_State.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/ComponentSystem/vp_StateManager.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/EventSystem/vp_Activity.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/EventSystem/vp_Attempt.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/EventSystem/vp_Event.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/EventSystem/vp_EventDump.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/EventSystem/vp_EventHandler.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/EventSystem/vp_GlobalEvent.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/EventSystem/vp_Message.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/EventSystem/vp_StateEventHandler.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/EventSystem/vp_TargetEvent.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/EventSystem/vp_Value.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Help/vp_Help.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Help/vp_UFPSHelp.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Motion/vp_AngleBob.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Motion/vp_Billboard.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Motion/vp_Bob.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Motion/vp_Perlin.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Motion/vp_RigidbodyImpulse.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Motion/vp_Spin.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Motion/vp_Spring.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Utility/vp_3DUtility.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Utility/vp_AudioUtility.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Utility/vp_Gizmo.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Utility/vp_Input.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Utility/vp_Layer.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Utility/vp_MathUtility.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Utility/vp_PoolManager.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Utility/vp_TimeUtility.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Utility/vp_Timer.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Utility/vp_Utility.cs
+Assets/Plugins/UFPS/Base/Scripts/Core/Utility/vp_WaypointGizmo.cs
+Assets/Plugins/UFPS/Base/Scripts/Demo/vp_DemoManager.cs
+Assets/Plugins/UFPS/Base/Scripts/Demo/vp_DoomsDayDevice.cs
+Assets/Plugins/UFPS/Base/Scripts/Demo/vp_FPSDemo1.cs
+Assets/Plugins/UFPS/Base/Scripts/Demo/vp_FPSDemo2.cs
+Assets/Plugins/UFPS/Base/Scripts/Demo/vp_FPSDemo3.cs
+Assets/Plugins/UFPS/Base/Scripts/Demo/vp_FPSDemoManager.cs
+Assets/Plugins/UFPS/Base/Scripts/Demo/vp_FPSDemoPlaceHolderMessenger.cs
+Assets/Plugins/UFPS/Base/Scripts/Effects/vp_Debris.cs
+Assets/Plugins/UFPS/Base/Scripts/Effects/vp_DecalManager.cs
+Assets/Plugins/UFPS/Base/Scripts/Effects/vp_MuzzleFlash.cs
+Assets/Plugins/UFPS/Base/Scripts/Effects/vp_PulsingLight.cs
+Assets/Plugins/UFPS/Base/Scripts/Effects/vp_Shell.cs
+Assets/Plugins/UFPS/Base/Scripts/GUI/vp_PainHUD.cs
+Assets/Plugins/UFPS/Base/Scripts/GUI/vp_SimpleCrosshair.cs
+Assets/Plugins/UFPS/Base/Scripts/GUI/vp_SimpleHUD.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/AI/vp_SecurityCamTurret.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/AI/vp_SimpleAITurret.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Combat/vp_DamageHandler.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Combat/vp_DamageInfo.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Combat/vp_Explosion.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Combat/vp_Grenade.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Combat/vp_HitscanBullet.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Combat/vp_Shooter.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Inventory/Attributes/vp_InventoryCapsAttribute.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Inventory/Attributes/vp_InventoryItemsAttribute.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Inventory/Attributes/vp_InventorySpaceAttribute.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Inventory/ItemTypes/vp_CustomType.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Inventory/ItemTypes/vp_ItemType.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Inventory/ItemTypes/vp_UnitBankType.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Inventory/ItemTypes/vp_UnitType.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Inventory/vp_Inventory.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Inventory/vp_ItemIdentifier.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Inventory/vp_ItemInstance.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Inventory/vp_ItemPickup.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Inventory/vp_UnitBankInstance.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Level/MovingPlatform/vp_MovingPlatform.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Level/Spawning/vp_Placement.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Level/Spawning/vp_RandomSpawner.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Level/Spawning/vp_Remover.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Level/Spawning/vp_Respawner.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Level/Spawning/vp_SpawnPoint.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Level/vp_KillZone.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/FootstepManager/vp_FootstepManager.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/FootstepManager/vp_SurfaceIdentifier.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/Interaction/vp_Climb.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/Interaction/vp_Grab.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/Interaction/vp_Interactable.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/Interaction/vp_PlatformSwitch.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/Interaction/vp_Switch.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/OldInventory/Pickups/vp_AmmoPickup.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/OldInventory/Pickups/vp_HealthPickup.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/OldInventory/Pickups/vp_Pickup.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/OldInventory/Pickups/vp_SlomoPickup.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/OldInventory/Pickups/vp_SpeedPickup.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/OldInventory/Pickups/vp_WeaponPickup.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/OldInventory/vp_SimpleInventory.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPBodyAnimator.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPCamera.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPController.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPEarthquake.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPInput.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPInteractManager.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPInventory.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPPistolReloader.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPPlayerDamageHandler.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPPlayerEventHandler.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPWeapon.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPWeaponHandler.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPWeaponMeleeAttack.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPWeaponReloader.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPWeaponShooter.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/Local/vp_FPWeaponThrower.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_3rdPersonWeaponAim.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_BodyAnimator.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_CapsuleController.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_CharacterController.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_Controller.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_PlayerDamageHandler.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_PlayerEventHandler.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_PlayerInventory.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_PlayerRespawner.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_RagdollHandler.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_SimpleFiring.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_Weapon.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_WeaponHandler.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_WeaponReloader.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_WeaponShooter.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/Player/vp_WeaponThrower.cs
+Assets/Plugins/UFPS/Base/Scripts/Gameplay/vp_Gameplay.cs
+Assets/Plugins/UFPS/acParkour/Scripts/Gameplay/Level/ac_TriggerAudio.cs
+Assets/Plugins/UFPS/acParkour/Scripts/Gameplay/Player/Local/ac_FPParkour.cs
+Assets/Plugins/UFPS/acParkour/Scripts/Gameplay/Player/Local/ac_FPParkourBodyAnimator.cs
+Assets/Plugins/UFPS/acParkour/Scripts/Gameplay/Player/Local/ac_FPParkourEventHandler.cs
+Assets/Plugins/UFPS/acParkour/Scripts/Gameplay/Player/Local/ac_PlayerActivitySound.cs
+"Assets/Standard Assets/Characters/FirstPersonCharacter/Scripts/FirstPersonController.cs"
+"Assets/Standard Assets/Characters/FirstPersonCharacter/Scripts/HeadBob.cs"
+"Assets/Standard Assets/Characters/FirstPersonCharacter/Scripts/MouseLook.cs"
+"Assets/Standard Assets/Characters/FirstPersonCharacter/Scripts/RigidbodyFirstPersonController.cs"
+"Assets/Standard Assets/Characters/RollerBall/Scripts/Ball.cs"
+"Assets/Standard Assets/Characters/RollerBall/Scripts/BallUserControl.cs"
+"Assets/Standard Assets/CrossPlatformInput/Scripts/AxisTouchButton.cs"
+"Assets/Standard Assets/CrossPlatformInput/Scripts/ButtonHandler.cs"
+"Assets/Standard Assets/CrossPlatformInput/Scripts/CrossPlatformInputManager.cs"
+"Assets/Standard Assets/CrossPlatformInput/Scripts/InputAxisScrollbar.cs"
+"Assets/Standard Assets/CrossPlatformInput/Scripts/Joystick.cs"
+"Assets/Standard Assets/CrossPlatformInput/Scripts/MobileControlRig.cs"
+"Assets/Standard Assets/CrossPlatformInput/Scripts/PlatformSpecific/MobileInput.cs"
+"Assets/Standard Assets/CrossPlatformInput/Scripts/PlatformSpecific/StandaloneInput.cs"
+"Assets/Standard Assets/CrossPlatformInput/Scripts/TiltInput.cs"
+"Assets/Standard Assets/CrossPlatformInput/Scripts/TouchPad.cs"
+"Assets/Standard Assets/CrossPlatformInput/Scripts/VirtualInput.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/Antialiasing.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/Bloom.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/BloomAndFlares.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/BloomOptimized.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/Blur.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/BlurOptimized.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/CameraMotionBlur.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/ColorCorrectionCurves.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/ColorCorrectionLookup.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/ColorCorrectionRamp.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/ContrastEnhance.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/ContrastStretch.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/CreaseShading.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/DepthOfField.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/DepthOfFieldDeprecated.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/EdgeDetection.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/Fisheye.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/GlobalFog.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/Grayscale.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/ImageEffectBase.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/ImageEffects.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/MotionBlur.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/NoiseAndGrain.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/NoiseAndScratches.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/PostEffectsBase.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/PostEffectsHelper.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/Quads.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/ScreenOverlay.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/ScreenSpaceAmbientObscurance.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/ScreenSpaceAmbientOcclusion.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/SepiaTone.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/SunShafts.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/TiltShift.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/Tonemapping.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/Triangles.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/Twirl.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/VignetteAndChromaticAberration.cs"
+"Assets/Standard Assets/Effects/ImageEffects/Scripts/Vortex.cs"
+"Assets/Standard Assets/Environment/Water (Basic)/Scripts/WaterBasic.cs"
+"Assets/Standard Assets/Environment/Water/Water/Scripts/Displace.cs"
+"Assets/Standard Assets/Environment/Water/Water/Scripts/GerstnerDisplace.cs"
+"Assets/Standard Assets/Environment/Water/Water/Scripts/MeshContainer.cs"
+"Assets/Standard Assets/Environment/Water/Water/Scripts/PlanarReflection.cs"
+"Assets/Standard Assets/Environment/Water/Water/Scripts/SpecularLighting.cs"
+"Assets/Standard Assets/Environment/Water/Water/Scripts/Water.cs"
+"Assets/Standard Assets/Environment/Water/Water/Scripts/WaterBase.cs"
+"Assets/Standard Assets/Environment/Water/Water/Scripts/WaterTile.cs"
+"Assets/Standard Assets/ParticleSystems/Scripts/AfterburnerPhysicsForce.cs"
+"Assets/Standard Assets/ParticleSystems/Scripts/ExplosionFireAndDebris.cs"
+"Assets/Standard Assets/ParticleSystems/Scripts/ExplosionPhysicsForce.cs"
+"Assets/Standard Assets/ParticleSystems/Scripts/Explosive.cs"
+"Assets/Standard Assets/ParticleSystems/Scripts/ExtinguishableParticleSystem.cs"
+"Assets/Standard Assets/ParticleSystems/Scripts/FireLight.cs"
+"Assets/Standard Assets/ParticleSystems/Scripts/Hose.cs"
+"Assets/Standard Assets/ParticleSystems/Scripts/ParticleSystemMultiplier.cs"
+"Assets/Standard Assets/ParticleSystems/Scripts/SmokeParticles.cs"
+"Assets/Standard Assets/ParticleSystems/Scripts/WaterHoseParticles.cs"
+"Assets/Standard Assets/Utility/ActivateTrigger.cs"
+"Assets/Standard Assets/Utility/AutoMobileShaderSwitch.cs"
+"Assets/Standard Assets/Utility/AutoMoveAndRotate.cs"
+"Assets/Standard Assets/Utility/CameraRefocus.cs"
+"Assets/Standard Assets/Utility/CurveControlledBob.cs"
+"Assets/Standard Assets/Utility/DragRigidbody.cs"
+"Assets/Standard Assets/Utility/DynamicShadowSettings.cs"
+"Assets/Standard Assets/Utility/EventSystemChecker.cs"
+"Assets/Standard Assets/Utility/FOVKick.cs"
+"Assets/Standard Assets/Utility/FPSCounter.cs"
+"Assets/Standard Assets/Utility/FollowTarget.cs"
+"Assets/Standard Assets/Utility/ForcedReset.cs"
+"Assets/Standard Assets/Utility/LerpControlledBob.cs"
+"Assets/Standard Assets/Utility/ObjectResetter.cs"
+"Assets/Standard Assets/Utility/ParticleSystemDestroyer.cs"
+"Assets/Standard Assets/Utility/PlatformSpecificContent.cs"
+"Assets/Standard Assets/Utility/SimpleActivatorMenu.cs"
+"Assets/Standard Assets/Utility/SimpleMouseRotator.cs"
+"Assets/Standard Assets/Utility/SmoothFollow.cs"
+"Assets/Standard Assets/Utility/TimedObjectActivator.cs"
+"Assets/Standard Assets/Utility/TimedObjectDestructor.cs"
+"Assets/Standard Assets/Utility/WaypointCircuit.cs"
+"Assets/Standard Assets/Utility/WaypointProgressTracker.cs"
+-r:"C:\Program Files\Unity 5.3.2\Editor\Data\Mono\lib\mono\unity\System.Runtime.Serialization.dll"
+-r:"C:\Program Files\Unity 5.3.2\Editor\Data\Mono\lib\mono\unity\System.Xml.Linq.dll"

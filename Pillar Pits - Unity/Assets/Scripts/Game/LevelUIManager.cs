@@ -28,6 +28,9 @@ public class LevelUIManager : MonoBehaviour {
 
     [Header("Game Object Level Screen")]
     public GameObject loadingScreen;
+
+    [Header("Hookshot Objects")]
+    public Image[] hookshotCoolDownBars = new Image[2];
        
 
     void Awake()
@@ -184,6 +187,31 @@ public class LevelUIManager : MonoBehaviour {
         for (int i = 0; i < _starIcons.Length; i++)
         {
             _starIcons[i].enabled = false;
+        }
+    }
+
+    public void TurnOffHookshotBars(int _numberofHookshots)
+    {
+       if(_numberofHookshots == 1)
+        {
+            hookshotCoolDownBars[0].enabled = false;
+        }
+       if(_numberofHookshots == 0)
+        {
+            hookshotCoolDownBars[1].enabled = false;
+        }
+    }
+
+    public void TurnOnHookshotBars(int _numberOfHookshots)
+    {
+        if (_numberOfHookshots == 1)
+        {
+            hookshotCoolDownBars[1].enabled = true;
+        }
+        if (_numberOfHookshots == 2)
+        {
+            hookshotCoolDownBars[0].enabled = true;
+            hookshotCoolDownBars[1].enabled = true;
         }
     }
 

@@ -27,8 +27,15 @@ public class Hookshot : MonoBehaviour {
     public LineRenderer lr;
     private bool isMoving;
 
+    [Header("Cooldown Attributes")]
+    [SerializeField] private float hookshotCooldownTime;
+    private int numberOfShotsLeft = 2;
+    private float cooldownTime;
+    private bool runTimer;
+
     void Start()
     {
+        ResetManager.ResetLevel += ResetHookshot;
         cc = GetComponent<CharacterController>();
        
     }
@@ -44,6 +51,24 @@ public class Hookshot : MonoBehaviour {
 
         if (isLerping)
             LerpHookShot();
+
+        if (runTimer)
+            HookshotCooldown();
+    }
+
+    void HookshotCooldown()
+    {
+        cooldownTime += Time.deltaTime;
+        if(cooldownTime >= hookshotCooldownTime)
+        {
+            numberOfShotsLeft++;
+            cooldownTime = 0;
+            LevelUIManager.instance.TurnOnHookshotBars(numberOfShotsLeft);
+            if(numberOfShotsLeft == 2)
+            {
+                runTimer = false;
+            }
+        }
     }
 
     void LerpHookShot()
@@ -82,16 +107,22 @@ public class Hookshot : MonoBehaviour {
         {
             if (!oneClick)
             {
-                oneClick = true;
-                doubleClickTimer = Time.time;
-                Debug.Log("Single Click");
-                ShootHookShot(false);
+                if(numberOfShotsLeft > 0)
+                {
+                    oneClick = true;
+                    doubleClickTimer = Time.time;
+                    ShootHookShot(false);
+                }
+               
             }
             else
             {
-                oneClick = false;
-                Debug.Log("DoubleClick");
-                ShootHookShot(true);
+                if(numberOfShotsLeft > 0)
+                {
+                    oneClick = false;
+                    ShootHookShot(true);
+                }
+               
             }
         }
         if (oneClick)
@@ -120,6 +151,13 @@ public class Hookshot : MonoBehaviour {
         {
             if(hit.collider)
             {
+                //Update Hookshot UI
+                numberOfShotsLeft--;
+                runTimer = true;
+                cooldownTime = 0;
+                LevelUIManager.instance.TurnOffHookshotBars(numberOfShotsLeft);
+
+
                 target = hit.point;
                 //isMoving = true;
 
@@ -141,5 +179,13 @@ public class Hookshot : MonoBehaviour {
         startPos = transform.position;
         endPos = target;
         isLerping = true;
+    }
+
+    void ResetHookshot()
+    {
+        isLerping = false;
+        isMoving = false;
+        numberOfShotsLeft = 2;
+        LevelUIManager.instance.TurnOnHookshotBars(numberOfShotsLeft);
     }
 }

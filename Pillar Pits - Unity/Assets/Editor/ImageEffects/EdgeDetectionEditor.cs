@@ -21,6 +21,9 @@ namespace UnityStandardAssets.ImageEffects
         SerializedProperty edgeExp;
         SerializedProperty sampleDist;
 
+        SerializedProperty edgesColor;
+
+
 
         void OnEnable () {
             serObj = new SerializedObject (target);
@@ -37,6 +40,8 @@ namespace UnityStandardAssets.ImageEffects
 
             edgeExp = serObj.FindProperty("edgeExp");
             sampleDist = serObj.FindProperty("sampleDist");
+
+            edgesColor = serObj.FindProperty("edgesColor");
         }
 
 
@@ -67,6 +72,10 @@ namespace UnityStandardAssets.ImageEffects
             EditorGUILayout.PropertyField (edgesOnlyBgColor, new GUIContent (" Color"));
 
             serObj.ApplyModifiedProperties();
+
+            //GUILayout.Label("Edges Color");
+            EditorGUILayout.PropertyField(edgesColor, new GUIContent("EdgesColor"));
+
         }
     }
 }
