@@ -26,7 +26,7 @@ public class SceneManager : MonoBehaviour {
             Application.Quit();
         }
 
-        if (Input.GetKeyUp(KeyCode.R))
+        if (Input.GetKeyUp(KeyCode.Backspace))
         {
             Application.LoadLevel(Application.loadedLevel);
         }

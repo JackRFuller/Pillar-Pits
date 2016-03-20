@@ -52,6 +52,7 @@ public class ShootingClass : MonoBehaviour {
     //Reload Weapon
     public virtual void Reload()
     {
+        Debug.Log("Start Reloading");
         //Check if player is reloading
         if (!isReloading)
         {
@@ -61,9 +62,11 @@ public class ShootingClass : MonoBehaviour {
                 //Determine how many bullets are needed
                 int numOfBulletsToReload = maxClipSize - currentClipAmmo;
                 isReloading = true;
-                //Play Reloading Animation
-                SetAnimationState("isReloading");
                 StartCoroutine(PlaceAmmo(numOfBulletsToReload));
+                //Play Reloading Animation
+                if (weaponAnim)
+                    SetAnimationState("isReloading");
+                
             }
         }
        
@@ -91,7 +94,8 @@ public class ShootingClass : MonoBehaviour {
         isReloading = false;
 
         //Return To Idle Animation
-        SetAnimationState("isIdle");  
+        if(weaponAnim)
+            SetAnimationState("isIdle");  
     }
 
     #region Animation

@@ -1,4 +1,8 @@
-﻿Shader "Outlined Diffuse"
+﻿// Upgrade NOTE: replaced 'glstate.matrix.modelview[0]' with 'UNITY_MATRIX_MV'
+// Upgrade NOTE: replaced 'glstate.matrix.mvp' with 'UNITY_MATRIX_MVP'
+// Upgrade NOTE: replaced 'glstate.matrix.projection' with 'UNITY_MATRIX_P'
+
+Shader "Outlined Diffuse"
 {
 	Properties
 	{
@@ -22,6 +26,8 @@
 		Tags{ "LightMode" = "Always" }
 
 		CGPROGRAM
+// Upgrade NOTE: excluded shader from DX11 and Xbox360; has structs without semantics (struct appdata members vertex,normal)
+#pragma exclude_renderers d3d11 xbox360
 #pragma vertex vert
 
 	struct appdata {
@@ -39,10 +45,10 @@
 
 	v2f vert(appdata v) {
 		v2f o;
-		o.pos = mul(glstate.matrix.mvp, v.vertex);
-		float3 norm = mul((float3x3)glstate.matrix.modelview[0], v.normal);
-		norm.x *= glstate.matrix.projection[0][0];
-		norm.y *= glstate.matrix.projection[1][1];
+		o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+		float3 norm = mul((float3x3)UNITY_MATRIX_MV, v.normal);
+		norm.x *= UNITY_MATRIX_P[0][0];
+		norm.y *= UNITY_MATRIX_P[1][1];
 		o.pos.xy += norm.xy * o.pos.z * _Outline;
 
 		o.fog = o.pos.z;

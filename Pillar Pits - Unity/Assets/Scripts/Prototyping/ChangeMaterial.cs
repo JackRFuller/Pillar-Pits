@@ -26,7 +26,8 @@ public class ChangeMaterial : MonoBehaviour {
 
         for(int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).GetComponent<MeshRenderer>().material = materials[materialID];
+            if(transform.GetChild(i).GetComponent<MeshRenderer>())
+                transform.GetChild(i).GetComponent<MeshRenderer>().material = materials[materialID];
         }
     }
 }

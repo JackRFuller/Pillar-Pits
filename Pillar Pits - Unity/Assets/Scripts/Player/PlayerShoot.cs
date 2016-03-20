@@ -72,9 +72,13 @@ public class PlayerShoot : ShootingClass {
         if (Input.GetKey(KeyCode.R))
         {
             //Check that the actor isn't shooting
-            if(CooldownCheck())
+            if (CooldownCheck())
+            {
+                Reload();
+                Debug.Log("Reload");
+            }
 
-                Reload();            
+                      
         }
 
         if (Input.GetMouseButtonDown(2))
@@ -111,7 +115,8 @@ public class PlayerShoot : ShootingClass {
 
      IEnumerator Melee()
     {
-        SetAnimationState("isHitting");
+        if(weaponAnim)
+            SetAnimationState("isHitting");
         yield return new WaitForSeconds(0.3f);
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, meleeRange);
         for(int i = 0; i < hitColliders.Length; i++)
@@ -122,7 +127,8 @@ public class PlayerShoot : ShootingClass {
         }
         yield return new WaitForSeconds(0.6f);
         meleeCoolDown += meleeCoolDownTime;
-        SetAnimationState("isIdle");
+        if(weaponAnim)
+            SetAnimationState("isIdle");
 
         //RaycastHit hit;
         //Ray ray = new Ray(transform.position, transform.forward * 1000);
@@ -144,6 +150,7 @@ public class PlayerShoot : ShootingClass {
         //Check if player is reloading
         if (!isReloading)
         {
+            Debug.Log("A");
             //Check that the clip can carry ammo
             if (currentClipAmmo < maxClipSize)
             {
@@ -153,10 +160,11 @@ public class PlayerShoot : ShootingClass {
 
                 //Turn Off Reticle
                 LevelUIManager.instance.TurnOffReticle();
-
-                //Play Reloading Animation
-                SetAnimationState("isReloading");
                 StartCoroutine(PlaceAmmo(numOfBulletsToReload));
+                //Play Reloading Animation
+                if (weaponAnim)
+                    SetAnimationState("isReloading");
+               
             }
         }
     }
@@ -191,18 +199,24 @@ public class PlayerShoot : ShootingClass {
         LevelUIManager.instance.TurnOnReticle();
 
         //Return To Idle Animation
-        SetAnimationState("isIdle");
+        if(weaponAnim)
+            SetAnimationState("isIdle");
     }
 
     void SendOutRayCast()
     {
         //Play Shooting Animation
-        SetAnimationState("isShooting");
-        
+        if (weaponAnim)
+            SetAnimationState("isShooting");
+
         //Particle System
-        gunSystem.Play();
-        ParticleSystem.EmissionModule _em = gunSystem.emission;
-        _em.enabled = true;
+        if (gunSystem)
+        {
+            gunSystem.Play();
+            ParticleSystem.EmissionModule _em = gunSystem.emission;
+            _em.enabled = true;
+        }
+       
 
         //Remove Ammo
         DecreaseAmmoCount();
@@ -239,7 +253,7 @@ public class PlayerShoot : ShootingClass {
 
         StartCoroutine(ReturnToIdle());
 
-        StartCoroutine(TurnOffParticleSystem(_em));
+        //StartCoroutine(TurnOffParticleSystem(_em));
     }
 
     IEnumerator TurnOffParticleSystem(ParticleSystem.EmissionModule _em)
@@ -254,6 +268,7 @@ public class PlayerShoot : ShootingClass {
     IEnumerator ReturnToIdle()
     {
         yield return new WaitForSeconds(shootingCooldownTime    );
-        SetAnimationState("isIdle");
+        if(weaponAnim)
+            SetAnimationState("isIdle");
     }
 }
