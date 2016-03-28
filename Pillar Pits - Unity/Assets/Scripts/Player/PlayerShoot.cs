@@ -35,7 +35,7 @@ public class PlayerShoot : ShootingClass {
         currentTotalAmmo = LevelManager.instance.levelAttributes.totalStartingAmmo;
 
         LevelUIManager.instance.UpdateTotalAmmo(currentTotalAmmo);
-        LevelUIManager.instance.InitialiseNumberOfBullets(currentClipAmmo);
+        //LevelUIManager.instance.InitialiseNumberOfBullets(currentClipAmmo);
     }
 
     void PoolBullets()
@@ -65,21 +65,21 @@ public class PlayerShoot : ShootingClass {
 
             if (!AmmoCheck() && CooldownCheck())
             {
-                Reload();
+                Debug.Log("OUT OF AMMO!!!");
             }
         }
 
-        if (Input.GetKey(KeyCode.R))
-        {
-            //Check that the actor isn't shooting
-            if (CooldownCheck())
-            {
-                Reload();
-                Debug.Log("Reload");
-            }
+        //if (Input.GetKey(KeyCode.R))
+        //{
+        //    //Check that the actor isn't shooting
+        //    if (CooldownCheck())
+        //    {
+        //        Reload();
+        //        Debug.Log("Reload");
+        //    }
 
                       
-        }
+        //}
 
         if (Input.GetMouseButtonDown(2))
         {
@@ -145,29 +145,29 @@ public class PlayerShoot : ShootingClass {
         //}
     }
 
-    public override void Reload()
-    {
-        //Check if player is reloading
-        if (!isReloading)
-        {
-            Debug.Log("A");
-            //Check that the clip can carry ammo
-            if (currentClipAmmo < maxClipSize)
-            {
-                //Determine how many bullets are needed
-                int numOfBulletsToReload = maxClipSize - currentClipAmmo;
-                isReloading = true;
+    //public override void Reload()
+    //{
+    //    //Check if player is reloading
+    //    if (!isReloading)
+    //    {
+    //        Debug.Log("A");
+    //        //Check that the clip can carry ammo
+    //        if (currentClipAmmo < maxClipSize)
+    //        {
+    //            //Determine how many bullets are needed
+    //            int numOfBulletsToReload = maxClipSize - currentClipAmmo;
+    //            isReloading = true;
 
-                //Turn Off Reticle
-                LevelUIManager.instance.TurnOffReticle();
-                StartCoroutine(PlaceAmmo(numOfBulletsToReload));
-                //Play Reloading Animation
-                if (weaponAnim)
-                    SetAnimationState("isReloading");
+    //            //Turn Off Reticle
+    //            LevelUIManager.instance.TurnOffReticle();
+    //            StartCoroutine(PlaceAmmo(numOfBulletsToReload));
+    //            //Play Reloading Animation
+    //            if (weaponAnim)
+    //                SetAnimationState("isReloading");
                
-            }
-        }
-    }
+    //        }
+    //    }
+    //}
 
     public override IEnumerator PlaceAmmo(int _numOfBulletsToReload)
     {
@@ -221,9 +221,11 @@ public class PlayerShoot : ShootingClass {
         //Remove Ammo
         DecreaseAmmoCount();
 
+
         int _bulletIconId = currentClipAmmo;
 
-        LevelUIManager.instance.TurnOffBulletIcons(_bulletIconId);
+        
+        //LevelUIManager.instance.TurnOffBulletIcons(_bulletIconId);
 
         //Add On Cooldown Time
         CooldownTimeIncrement();

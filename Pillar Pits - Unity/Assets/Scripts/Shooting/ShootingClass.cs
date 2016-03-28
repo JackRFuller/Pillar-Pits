@@ -47,6 +47,9 @@ public class ShootingClass : MonoBehaviour {
     public void DecreaseAmmoCount()
     {
         currentClipAmmo--;
+        //Update UI
+        LevelUIManager.instance.UpdateTotalAmmo(currentClipAmmo);
+
     }
 
     //Reload Weapon
