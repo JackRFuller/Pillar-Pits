@@ -59,7 +59,7 @@ public class LevelUIManager : MonoBehaviour {
     public void UpdateTimer(float _currentTime)
     {
         levelTimerText.text = _currentTime.ToString("F2");
-    }
+    }    
 
     public void TurnOffBulletIcons(int _BulletToTurnOff)
     {

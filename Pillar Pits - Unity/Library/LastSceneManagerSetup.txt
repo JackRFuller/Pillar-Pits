@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/CharacterMovement.unity
+- path: Assets/Plugins/Moments Recorder/Demo/Demo.unity
   isLoaded: 1
   isActive: 1

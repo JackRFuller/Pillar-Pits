@@ -5,25 +5,21 @@ using System.Collections.Generic;
 public class PlayerShoot : ShootingClass {
 
     [Header("ParticleSystem")]
-    public ParticleSystem gunSystem;
-
-    [Header("Bullets")]
-    public GameObject bulletPrefab;
-    [SerializeField] private int numOfBulletsToSpawn;
-    private List<GameObject> pooledBullets;
-    public Transform gunMuzzle;
+    public ParticleSystem gunSystem;    
 
     [Header("Melee")]
     [SerializeField] private float meleeRange;
     [SerializeField] private float meleeCoolDownTime;
     private float meleeCoolDown;
 
+    [Header("Bullets")]
+    [SerializeField] private Transform gunEnd;
+    [SerializeField] private LineRenderer lr;
+    [SerializeField] private float gunShotVisible = 0.1f;
 
     void Start()
     {
-        LevelManager.InitaliseLevel += Init;
-
-        PoolBullets();
+        LevelManager.InitaliseLevel += Init;        
     }
 
     //Initilise the ammount of ammo the user has
@@ -36,19 +32,7 @@ public class PlayerShoot : ShootingClass {
 
         LevelUIManager.instance.UpdateTotalAmmo(currentTotalAmmo);
         //LevelUIManager.instance.InitialiseNumberOfBullets(currentClipAmmo);
-    }
-
-    void PoolBullets()
-    {
-        pooledBullets = new List<GameObject>();
-
-        for(int i = 0; i < numOfBulletsToSpawn; i++)
-        {
-            GameObject _bullet = Instantiate(bulletPrefab) as GameObject;
-            _bullet.SetActive(false);
-            pooledBullets.Add(_bullet);
-        }
-    }
+    }    
 	
 	// Update is called once per frame
 	void Update () {
@@ -231,31 +215,45 @@ public class PlayerShoot : ShootingClass {
         CooldownTimeIncrement();
 
         //Send Out Ray Cast From the Middle Of the Screen
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-
-        //Send Out Bullet
-        for(int i = 0; i < pooledBullets.Count; i++)
-        {
-            if (!pooledBullets[i].activeInHierarchy)
-            {
-                //pooledBullets[i].transform.parent = gunMuzzle;
-                pooledBullets[i].transform.position = gunMuzzle.position;
-                pooledBullets[i].transform.localRotation = gunMuzzle.rotation;               
-                pooledBullets[i].SetActive(true);
-                break;
-            }
-        }
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));       
 
         RaycastHit hit;
+        Transform _target;
 
-        if(Physics.Raycast(ray, out hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            hit.collider.gameObject.SendMessage("Hit", damage, SendMessageOptions.DontRequireReceiver);          
+            _target = hit.transform;
+            StartCoroutine(FireAtTarget(_target));
+            hit.collider.gameObject.SendMessage("Hit", damage, SendMessageOptions.DontRequireReceiver);                   
         }
 
         StartCoroutine(ReturnToIdle());
 
         //StartCoroutine(TurnOffParticleSystem(_em));
+    }
+
+    IEnumerator FireAtTarget(Transform target)
+    {
+        float lineLength = Vector3.Distance(gunEnd.position, target.position);
+        lr.enabled = true;
+        yield return StartCoroutine(MoveLineRenderer(lineLength));
+        lr.enabled = false;
+    }
+
+    IEnumerator MoveLineRenderer(float lineLength)
+    {
+        //Create a timer
+        float timer = 0f;
+
+        while(timer < gunShotVisible)
+        {
+            lr.SetPosition(0, gunEnd.position);
+            lr.SetPosition(1, gunEnd.position + gunEnd.forward * lineLength);
+
+            yield return null;
+
+            timer += Time.deltaTime;
+        }
     }
 
     IEnumerator TurnOffParticleSystem(ParticleSystem.EmissionModule _em)
