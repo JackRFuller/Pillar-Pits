@@ -147,7 +147,7 @@ public class LevelManager : MonoBehaviour
 
     void RunTimer()
     {
-        levelTimer += Time.deltaTime;
+        levelTimer += Time.smoothDeltaTime * Time.timeScale;
         LevelUIManager.instance.UpdateTimer(levelTimer);
     }
 
