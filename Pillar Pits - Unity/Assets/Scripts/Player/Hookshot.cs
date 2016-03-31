@@ -33,6 +33,14 @@ public class Hookshot : MonoBehaviour {
     private float cooldownTime;
     private bool runTimer;
 
+    [Header("Particle Effects")]
+    [SerializeField] private Transform gunEnd;
+    [SerializeField] private GameObject initialShot;   
+    [SerializeField] private GameObject wave;
+    [SerializeField] private float disturbance;
+    private GameObject currentShot;
+    private bool hookshotOut;
+
     void Start()
     {
         ResetManager.ResetLevel += ResetHookshot;
@@ -96,6 +104,15 @@ public class Hookshot : MonoBehaviour {
             speed = hookshotSpeed * hookshotModifier;
             _offset = _offset.normalized * speed;
             cc.Move(_offset * Time.deltaTime);
+            float dist = Vector3.Distance(target, transform.position);
+            if (dist < 1f)
+            {
+                isMoving = false;
+                if (currentShot != null)
+                    currentShot.GetComponent<BeamParam>().bEnd = true;
+            }
+                
+
             lr.SetPosition(0, transform.position);
             lr.SetPosition(1, target);
         }
@@ -104,42 +121,57 @@ public class Hookshot : MonoBehaviour {
     void HookShotInput()
     {
         if (Input.GetMouseButtonDown(1))
-        {
-            if (!oneClick)
+        {           
+            if(numberOfShotsLeft > 0)
             {
-                if(numberOfShotsLeft > 0)
-                {
-                    oneClick = true;
-                    doubleClickTimer = Time.time;
-                    ShootHookShot(false);
-                }
-               
-            }
-            else
-            {
-                if(numberOfShotsLeft > 0)
-                {
-                    oneClick = false;
-                    ShootHookShot(true);
-                }
-               
+                oneClick = true;
+                doubleClickTimer = Time.time;
+                ShootHookShot(false);
+                SendOutParticleEffect();
+                
             }
         }
-        if (oneClick)
+        if (Input.GetMouseButton(1))
         {
-            if ((Time.time - doubleClickTimer) > timeForDoubleClickCheck)
+            if (hookshotOut)
             {
-                oneClick = false;
-            }
-        }
+                currentShot.transform.position = gunEnd.position;
 
+                BeamParam bp = GetComponent<BeamParam>();
+                if (currentShot.GetComponent<BeamParam>().bGero)
+                    currentShot.transform.parent = transform;
+
+                Vector3 s = new Vector3(bp.Scale, bp.Scale, bp.Scale);
+
+                currentShot.transform.localScale = s;
+                currentShot.GetComponent<BeamParam>().SetBeamParam(bp);
+            }
+        }   
         if (Input.GetMouseButtonUp(1))
         {
             isMoving = false;
             lr.SetPosition(0, Vector3.zero);
             lr.SetPosition(1, Vector3.zero);
             hasDoubleClicked = false;
+
+            if (currentShot != null)
+                currentShot.GetComponent<BeamParam>().bEnd = true;
+
+            hookshotOut = false;
         }
+    }
+
+    void SendOutParticleEffect()
+    {
+        GameObject hookShot = (GameObject)Instantiate(wave, gunEnd.position, gunEnd.rotation);
+        hookShot.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
+
+        GameObject hookShotWave;
+
+        hookShotWave = initialShot;
+        currentShot = (GameObject)Instantiate(hookShotWave, gunEnd.position, gunEnd.rotation);
+
+        hookshotOut = true;
     }
 
     void ShootHookShot(bool _doubleClicked)
