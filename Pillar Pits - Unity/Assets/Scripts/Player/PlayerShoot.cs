@@ -13,13 +13,17 @@ public class PlayerShoot : ShootingClass {
     private float meleeCoolDown;
 
     [Header("Bullets")]
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private int numOfBulletsToSpawn;
+    private List<GameObject> spawnedBullets;
     [SerializeField] private Transform gunEnd;
     [SerializeField] private LineRenderer lr;
     [SerializeField] private float gunShotVisible = 0.1f;
 
     void Start()
     {
-        LevelManager.InitaliseLevel += Init;        
+        LevelManager.InitaliseLevel += Init;
+        PoolBullets();  
     }
 
     //Initilise the ammount of ammo the user has
@@ -33,6 +37,27 @@ public class PlayerShoot : ShootingClass {
         LevelUIManager.instance.UpdateTotalAmmo(currentTotalAmmo);
         //LevelUIManager.instance.InitialiseNumberOfBullets(currentClipAmmo);
     }    
+
+    void PoolBullets()
+    {
+        spawnedBullets = new List<GameObject>();
+        for(int i = 0; i < numOfBulletsToSpawn; i++)
+        {
+            GameObject _bullet = Instantiate(bullet, gunEnd.position, bullet.transform.rotation) as GameObject;
+            _bullet.SetActive(false);
+            spawnedBullets.Add(_bullet);
+        }
+
+        ResetManager.ResetLevel += ResetBullets;
+    }
+
+    void ResetBullets()
+    {
+        for(int i = 0; i < spawnedBullets.Count; i++)
+        {
+            spawnedBullets[i].SetActive(false);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -191,16 +216,7 @@ public class PlayerShoot : ShootingClass {
     {
         //Play Shooting Animation
         if (weaponAnim)
-            SetAnimationState("isShooting");
-
-        //Particle System
-        if (gunSystem)
-        {
-            gunSystem.Play();
-            ParticleSystem.EmissionModule _em = gunSystem.emission;
-            _em.enabled = true;
-        }
-       
+            SetAnimationState("isShooting");       
 
         //Remove Ammo
         DecreaseAmmoCount();
@@ -218,13 +234,24 @@ public class PlayerShoot : ShootingClass {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));       
 
         RaycastHit hit;
-        Transform _target;
+        Vector3 _target;
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            _target = hit.transform;
-            StartCoroutine(FireAtTarget(_target));
-            hit.collider.gameObject.SendMessage("Hit", damage, SendMessageOptions.DontRequireReceiver);                   
+            for(int i = 0; i < spawnedBullets.Count; i++)
+            {
+                if (!spawnedBullets[i].activeInHierarchy)
+                {
+                    GameObject _bullet = spawnedBullets[i];
+                    _bullet.transform.position = gunEnd.position;
+                    _bullet.SetActive(true);
+                    BulletBehaviour _bulletScript = _bullet.GetComponent<BulletBehaviour>();
+                    _target = hit.point;
+                    _bulletScript.SetTarget(_target);
+                    
+                    break;
+                }
+            }          
         }
 
         StartCoroutine(ReturnToIdle());

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Plugins/Moments Recorder/Demo/Demo.unity
+- path: Assets/BasicBeamShot/SampleScene.unity
   isLoaded: 1
   isActive: 1

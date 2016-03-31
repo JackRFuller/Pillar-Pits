@@ -10,6 +10,8 @@ TagManager:
   - Blue
   - Red
   - Target
+  - shield
+  - explosion
   layers:
   - Default
   - TransparentFX
@@ -31,7 +33,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Bullet
   - MovableObject
   - Ragdoll
   - RemotePlayer

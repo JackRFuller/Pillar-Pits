@@ -1,36 +1,107 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BulletBehaviour : MonoBehaviour {
-
-    [SerializeField] private float bulletSpeed;
+public class BulletBehaviour : MonoBehaviour
+{
+    [SerializeField] private float speed;
+    [SerializeField] private float damage;
+    [SerializeField] private float range; //Calculated in Seconds
+    public LayerMask collisionMask;
+    private Vector3 target;
     private Rigidbody rb;
-    private TrailRenderer tr;
+    private bool isMoving;
+    private bool hasCollided;
+    private Vector3 direction;
 
-	void OnEnable()
+    void Start()
     {
-        if(rb == null)
-            rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+    }    
 
-        //if (tr == null)
-        //    tr = GetComponent<TrailRenderer>();
+    public void SetTarget(Vector3 _target)
+    {
+        target = _target;
+        isMoving = true;
+        direction = target - transform.position;
 
-        
-
-        //tr.transform.position = Vector3.zero;
-
-        StartCoroutine(TurnOffBullet());
+        StartCoroutine(CalculateDistance());
     }
 
-    IEnumerator TurnOffBullet()
+    //void Update()
+    //{
+    //    if (isMoving)
+    //        Reflection();
+    //}
+
+    void FixedUpdate()
     {
-        //tr.time = 5f;
-        transform.parent = null;
-        rb.velocity = transform.TransformPoint(Vector3.left * bulletSpeed);
+        if (isMoving)
+        {
+            MoveBullet();            
+        }
+            
+    }
 
+    void MoveBullet()
+    {       
+        rb.AddRelativeForce(direction * speed, ForceMode.Force);
+    }
 
-        yield return new WaitForSeconds(0.2f);
-       // tr.time = 0.1f;
+    void Reflection()
+    {
+        Ray ray = new Ray(transform.position, Vector3.forward);
+        Debug.DrawRay(ray.origin, ray.direction, Color.green);
+        RaycastHit hit;
+        Debug.Log("A ");
+
+        if (Physics.Raycast(ray, out hit,1f, collisionMask))
+        {
+            //Debug.Log("Hit " + hit.collider.name);
+            if (hit.collider.tag == "Untagged")
+            {
+                Debug.Log("Hit " + hit.collider.name);
+                Vector3 reflectDir = Vector3.Reflect(ray.direction, hit.normal);
+                float rot = 90 - Mathf.Atan2(reflectDir.z, reflectDir.x) * Mathf.Rad2Deg;
+                transform.eulerAngles = new Vector3(0, rot, 0);
+                isMoving = false;
+                hasCollided = true;
+            }
+        }
+
+        if (hasCollided)
+        {
+            transform.Translate(Vector3.forward * speed);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Target")
+        {
+            SendDamage(other.gameObject);
+            TurnOffBullet();
+        }
+    }
+
+    void SendDamage(GameObject _target)
+    {
+        _target.SendMessage("Hit", damage, SendMessageOptions.DontRequireReceiver);
+    }
+
+    IEnumerator CalculateDistance()
+    {
+        yield return new WaitForSeconds(range);
+        TurnOffBullet();
+    }
+
+    void TurnOffBullet()
+    {
+        direction = Vector3.zero;
+        target = Vector3.zero;
+        isMoving = false;
+        hasCollided = false;
+        rb.velocity = Vector3.zero;
         gameObject.SetActive(false);
     }
+
 }
