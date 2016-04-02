@@ -11,7 +11,7 @@ public class LevelUIManager : MonoBehaviour {
     public Text ammoTotalText;
 
     [Header("Level Timer")]
-    public Text levelTimerText;
+    public Text[] levelTimerText;
 
     [Header("Target Objects")]   
     public Image[] targetIconImages;
@@ -58,7 +58,11 @@ public class LevelUIManager : MonoBehaviour {
 
     public void UpdateTimer(float _currentTime)
     {
-        levelTimerText.text = _currentTime.ToString("F2");
+        for(int i = 0; i < levelTimerText.Length; i++)
+        {
+            levelTimerText[i].text = _currentTime.ToString("F2");
+        }
+        
     }    
 
     public void TurnOffBulletIcons(int _BulletToTurnOff)
