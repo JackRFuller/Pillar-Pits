@@ -79,13 +79,13 @@ public class BulletBehaviour : MonoBehaviour
         if (other.tag == "Target")
         {
             SendDamage(other.gameObject);
-            TurnOffBullet();
         }
     }
 
     void SendDamage(GameObject _target)
     {
         _target.SendMessage("Hit", damage, SendMessageOptions.DontRequireReceiver);
+        TurnOffBullet();
     }
 
     IEnumerator CalculateDistance()
@@ -96,11 +96,13 @@ public class BulletBehaviour : MonoBehaviour
 
     void TurnOffBullet()
     {
+        if (rb)
+            rb.velocity = Vector3.zero;
         direction = Vector3.zero;
         target = Vector3.zero;
         isMoving = false;
         hasCollided = false;
-        rb.velocity = Vector3.zero;
+        
         gameObject.SetActive(false);
     }
 

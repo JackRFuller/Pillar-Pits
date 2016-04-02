@@ -1,15 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Hookshot : MonoBehaviour {
-
     
-    [Header("DoubleClickAttributes")]
-    [SerializeField] private float timeForDoubleClickCheck;
-    private bool oneClick;
-    private float doubleClickTimer;
-    private bool hasDoubleClicked;
-
     [Header("Hookshot Attributes")]
     [SerializeField] private float hookshotSpeed;
     [SerializeField] private float hookshotModifier;   
@@ -31,21 +25,47 @@ public class Hookshot : MonoBehaviour {
     [SerializeField] private float hookshotCooldownTime;
     private int numberOfShotsLeft = 2;
     private float cooldownTime;
-    private bool runTimer;
+    private bool runTimer;   
 
-    [Header("Particle Effects")]
+    [Header("Hookshot Bullet")]
+    [SerializeField] private GameObject hookshotBullet;
+    [SerializeField] private int numberOfHBToSpawn;
+    [SerializeField] private float bulletSpeed;
     [SerializeField] private Transform gunEnd;
-    [SerializeField] private GameObject initialShot;   
-    [SerializeField] private GameObject wave;
-    [SerializeField] private float disturbance;
-    private GameObject currentShot;
-    private bool hookshotOut;
+    private List<GameObject> hookShotBullets;
+    private Rigidbody hookShotRB;
+    private Vector3 bulletDirection;
+    private GameObject currentBullet;
+    private bool isBulletMoving;
+    private bool bulletActive;
+
+    [Header("Animations")]
+    [SerializeField] private Animator hookShotAnimation;
 
     void Start()
     {
+        Init();
+    }
+
+    void Init()
+    {
         ResetManager.ResetLevel += ResetHookshot;
+        ResetManager.ResetLevel += DeActivateAllHookShotBullets;
         cc = GetComponent<CharacterController>();
-       
+
+        PoolHookShotBullets();
+    }
+
+    void PoolHookShotBullets()
+    {
+        hookShotBullets = new List<GameObject>();
+
+        for(int i = 0; i < numberOfHBToSpawn; i++)
+        {
+            GameObject _hookShotBullet = (GameObject)Instantiate(hookshotBullet, hookshotBullet.transform.position, transform.rotation);
+            _hookShotBullet.SetActive(false);
+            hookShotBullets.Add(_hookShotBullet);
+        }
     }
    
 
@@ -57,11 +77,46 @@ public class Hookshot : MonoBehaviour {
         if (isMoving)
             MoveTowardsTarget();
 
-        if (isLerping)
-            LerpHookShot();
+        if (isBulletMoving)
+            MoveBullet();
 
         if (runTimer)
             HookshotCooldown();
+    }
+
+    void HookShotInput()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (!bulletActive)
+            {
+                if (numberOfShotsLeft > 0)
+                {
+                    ShootHookShot();
+                }
+            }
+            else
+            {
+                CancelHookShot();
+            }
+           
+        }        
+        //if (Input.GetMouseButtonUp(1))
+        //{
+           
+        //}
+    }
+
+    void CancelHookShot()
+    {
+        isBulletMoving = false;
+        if (currentBullet != null)
+            currentBullet.SetActive(false);
+        isMoving = false;
+        isBulletMoving = false;
+        ResetHookShotBullet();
+        bulletActive = false;
+        Debug.Log("Hit");
     }
 
     void HookshotCooldown()
@@ -79,145 +134,121 @@ public class Hookshot : MonoBehaviour {
         }
     }
 
-    void LerpHookShot()
-    {
-        float _timeSinceStarted = Time.time - timeStartedLerping;
-        float _percentageComplete = _timeSinceStarted / timeTakenToExtendHookshot;
-        Vector3 _hookshotLine = Vector3.Lerp(startPos, endPos, _percentageComplete);
-        lr.SetPosition(1, _hookshotLine);
-
-        if(_percentageComplete >= 1.0f)
-        {
-            isLerping = false;
-            isMoving = true;
-        }
-
-    }
-
     void MoveTowardsTarget()
     {
         Vector3 _offset = target - transform.position;
         float speed = hookshotSpeed;
         if (_offset.magnitude > .5f)
         {
-            if (hasDoubleClicked)
-            speed = hookshotSpeed * hookshotModifier;
             _offset = _offset.normalized * speed;
             cc.Move(_offset * Time.deltaTime);
             float dist = Vector3.Distance(target, transform.position);
-            if (dist < 1f)
+            if (dist < 3f)
             {
                 isMoving = false;
-                if (currentShot != null)
-                    currentShot.GetComponent<BeamParam>().bEnd = true;
+                CancelHookShot();
+                ResetHookShotBullet();
             }
-                
-
-            lr.SetPosition(0, transform.position);
-            lr.SetPosition(1, target);
         }
     }
 
-    void HookShotInput()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {           
-            if(numberOfShotsLeft > 0)
-            {
-                oneClick = true;
-                doubleClickTimer = Time.time;
-                ShootHookShot(false);
-                SendOutParticleEffect();
-                
-            }
-        }
-        if (Input.GetMouseButton(1))
-        {
-            if (hookshotOut)
-            {
-                currentShot.transform.position = gunEnd.position;
-
-                BeamParam bp = GetComponent<BeamParam>();
-                if (currentShot.GetComponent<BeamParam>().bGero)
-                    currentShot.transform.parent = transform;
-
-                Vector3 s = new Vector3(bp.Scale, bp.Scale, bp.Scale);
-
-                currentShot.transform.localScale = s;
-                currentShot.GetComponent<BeamParam>().SetBeamParam(bp);
-            }
-        }   
-        if (Input.GetMouseButtonUp(1))
-        {
-            isMoving = false;
-            lr.SetPosition(0, Vector3.zero);
-            lr.SetPosition(1, Vector3.zero);
-            hasDoubleClicked = false;
-
-            if (currentShot != null)
-                currentShot.GetComponent<BeamParam>().bEnd = true;
-
-            hookshotOut = false;
-        }
-    }
-
-    void SendOutParticleEffect()
-    {
-        GameObject hookShot = (GameObject)Instantiate(wave, gunEnd.position, gunEnd.rotation);
-        hookShot.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
-
-        GameObject hookShotWave;
-
-        hookShotWave = initialShot;
-        currentShot = (GameObject)Instantiate(hookShotWave, gunEnd.position, gunEnd.rotation);
-
-        hookshotOut = true;
-    }
-
-    void ShootHookShot(bool _doubleClicked)
+    void ShootHookShot()
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            if(hit.collider)
+            if (hit.collider.tag == "LevelGeo")
             {
+                //Spawn In Hookshot Bullet
+                for(int i = 0; i < hookShotBullets.Count; i++)
+                {
+                    if (!hookShotBullets[i].activeInHierarchy)
+                    {
+                        currentBullet = hookShotBullets[i];
+                         hookShotRB = currentBullet.GetComponent<Rigidbody>();
+                        if (hookShotRB.isKinematic)
+                            hookShotRB.isKinematic = false;
+                        currentBullet.transform.parent = gunEnd.transform;
+                        currentBullet.transform.localPosition = Vector3.zero;
+                        currentBullet.transform.parent = null;
+                        currentBullet.SetActive(true);
+                        bulletActive = true;
+                        break;
+                    }
+                }
+
                 //Update Hookshot UI
                 numberOfShotsLeft--;
                 runTimer = true;
                 cooldownTime = 0;
                 LevelUIManager.instance.TurnOffHookshotBars(numberOfShotsLeft);
 
-
                 target = hit.point;
-                //isMoving = true;
-
-                if (_doubleClicked)
-                    hasDoubleClicked = true;
-                else hasDoubleClicked = false;
-
-                SetUpHookshotLerp();
-                 
+                bulletDirection = target - currentBullet.transform.position;
+                isBulletMoving = true;
+            }
+            else
+            {
+                Debug.Log("DERP!");
             }
         }
     }
 
-    void SetUpHookshotLerp()
+    void MoveBullet()
     {
-        lr.SetPosition(0, Vector3.zero);
-        lr.SetPosition(1, Vector3.zero);
-        timeStartedLerping = Time.time;
-        startPos = transform.position;
-        endPos = target;
-        isLerping = true;
+        hookShotRB.AddRelativeForce(bulletDirection * bulletSpeed, ForceMode.Force);
+
+        float _dist = Vector3.Distance(target, currentBullet.transform.position);
+
+        if(_dist < 3)
+        {            
+            currentBullet.transform.position = target;
+            hookShotRB.isKinematic = true;
+            hookShotRB.velocity = Vector3.zero;
+            isBulletMoving = false;
+            isMoving = true;
+        }
+    }
+
+    void ResetHookShotBullet()
+    {
+        bulletDirection = Vector3.zero;
+        hookShotRB.velocity = Vector3.zero;
+        if(currentBullet != null)
+            currentBullet.SetActive(false);
+        currentBullet = null;
     }
 
     void ResetHookshot()
     {
-        isLerping = false;
+        isBulletMoving = false;
         isMoving = false;
         numberOfShotsLeft = 2;
         LevelUIManager.instance.TurnOnHookshotBars(numberOfShotsLeft);
+    }
+
+    void SetAnimation(string _animState)
+    {
+        hookShotAnimation.SetBool(_animState, true);
+
+        for (int i = 0; i < hookShotAnimation.parameterCount; i++)
+        {
+            string _parameterName = hookShotAnimation.parameters[i].name;
+
+            if (_parameterName != _animState)
+                hookShotAnimation.SetBool(_parameterName, false);
+        }
+    }
+
+    void DeActivateAllHookShotBullets()
+    {
+        for(int i = 0; i < hookShotBullets.Count; i++)
+        {
+            hookShotBullets[i].SetActive(false);
+        }
+
+        currentBullet = null;
     }
 }

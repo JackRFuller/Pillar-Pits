@@ -243,7 +243,10 @@ public class PlayerShoot : ShootingClass {
                 if (!spawnedBullets[i].activeInHierarchy)
                 {
                     GameObject _bullet = spawnedBullets[i];
-                    _bullet.transform.position = gunEnd.position;
+                    _bullet.transform.parent = gunEnd.transform;
+                    _bullet.transform.localPosition = Vector3.zero;
+                    _bullet.transform.localPosition = gunEnd.localPosition;
+                    _bullet.transform.parent = null;
                     _bullet.SetActive(true);
                     BulletBehaviour _bulletScript = _bullet.GetComponent<BulletBehaviour>();
                     _target = hit.point;
@@ -254,9 +257,21 @@ public class PlayerShoot : ShootingClass {
             }          
         }
 
-        StartCoroutine(ReturnToIdle());
+        StartCoroutine(HolsterWeapon());
 
         //StartCoroutine(TurnOffParticleSystem(_em));
+    }
+
+    IEnumerator HolsterWeapon()
+    {
+        yield return new WaitForSeconds(0.3f);
+        if (weaponAnim)
+            SetAnimationState("isHolstering");
+        yield return new WaitForSeconds(0.3f);
+        if (weaponAnim)
+            SetAnimationState("isIdle");
+
+
     }
 
     IEnumerator FireAtTarget(Transform target)
@@ -291,11 +306,5 @@ public class PlayerShoot : ShootingClass {
         gunSystem.Stop();
 
     }
-
-    IEnumerator ReturnToIdle()
-    {
-        yield return new WaitForSeconds(shootingCooldownTime    );
-        if(weaponAnim)
-            SetAnimationState("isIdle");
-    }
+    
 }

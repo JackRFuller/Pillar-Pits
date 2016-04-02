@@ -13,9 +13,9 @@ GameObject:
   - 33: {fileID: 3364882}
   - 114: {fileID: 11489978}
   - 64: {fileID: 6411704}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (18)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -33,9 +33,9 @@ GameObject:
   - 33: {fileID: 3395684}
   - 114: {fileID: 11463254}
   - 64: {fileID: 6402634}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (10)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -53,9 +53,9 @@ GameObject:
   - 33: {fileID: 3308410}
   - 114: {fileID: 11429784}
   - 64: {fileID: 6461190}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (47)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -73,9 +73,9 @@ GameObject:
   - 33: {fileID: 3368200}
   - 114: {fileID: 11476738}
   - 64: {fileID: 6493268}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (31)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -93,9 +93,9 @@ GameObject:
   - 33: {fileID: 3303778}
   - 114: {fileID: 11427310}
   - 64: {fileID: 6439858}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (56)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -165,9 +165,9 @@ GameObject:
   - 33: {fileID: 3311960}
   - 114: {fileID: 11425676}
   - 64: {fileID: 6425794}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (37)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -185,9 +185,9 @@ GameObject:
   - 33: {fileID: 3369852}
   - 114: {fileID: 11469770}
   - 64: {fileID: 6419836}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (12)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -205,9 +205,9 @@ GameObject:
   - 33: {fileID: 3355580}
   - 114: {fileID: 11410558}
   - 64: {fileID: 6498260}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (9)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -225,9 +225,9 @@ GameObject:
   - 33: {fileID: 3385804}
   - 114: {fileID: 11461534}
   - 64: {fileID: 6456876}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (48)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -245,9 +245,9 @@ GameObject:
   - 33: {fileID: 3318422}
   - 114: {fileID: 11404810}
   - 64: {fileID: 6460772}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (54)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -265,9 +265,9 @@ GameObject:
   - 33: {fileID: 3348228}
   - 114: {fileID: 11432362}
   - 64: {fileID: 6445704}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (50)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -305,9 +305,9 @@ GameObject:
   - 33: {fileID: 3329240}
   - 114: {fileID: 11480654}
   - 64: {fileID: 6474504}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -325,9 +325,9 @@ GameObject:
   - 33: {fileID: 3386954}
   - 114: {fileID: 11459606}
   - 64: {fileID: 6429974}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Right Angle (3)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -345,9 +345,9 @@ GameObject:
   - 33: {fileID: 3391450}
   - 114: {fileID: 11485386}
   - 64: {fileID: 6429396}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (42)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -365,9 +365,9 @@ GameObject:
   - 33: {fileID: 3382104}
   - 114: {fileID: 11437194}
   - 64: {fileID: 6469062}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Right Angle
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -385,9 +385,9 @@ GameObject:
   - 33: {fileID: 3303310}
   - 114: {fileID: 11483330}
   - 64: {fileID: 6426496}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (23)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -405,9 +405,9 @@ GameObject:
   - 33: {fileID: 3372402}
   - 114: {fileID: 11462078}
   - 64: {fileID: 6451868}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (20)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -425,9 +425,9 @@ GameObject:
   - 33: {fileID: 3360298}
   - 114: {fileID: 11401882}
   - 64: {fileID: 6428006}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (8)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -461,9 +461,9 @@ GameObject:
   - 33: {fileID: 3358924}
   - 114: {fileID: 11403754}
   - 64: {fileID: 6427996}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (11)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -501,9 +501,9 @@ GameObject:
   - 33: {fileID: 3316284}
   - 114: {fileID: 11499948}
   - 64: {fileID: 6486626}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (25)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -541,9 +541,9 @@ GameObject:
   - 33: {fileID: 3320754}
   - 114: {fileID: 11493828}
   - 64: {fileID: 6408028}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (32)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -576,9 +576,9 @@ GameObject:
   - 33: {fileID: 3364322}
   - 114: {fileID: 11458418}
   - 64: {fileID: 6412468}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (39)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -596,9 +596,9 @@ GameObject:
   - 33: {fileID: 3346214}
   - 114: {fileID: 11405298}
   - 64: {fileID: 6442996}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (58)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -616,9 +616,9 @@ GameObject:
   - 33: {fileID: 3315506}
   - 114: {fileID: 11447106}
   - 64: {fileID: 6464144}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -636,9 +636,9 @@ GameObject:
   - 33: {fileID: 3333474}
   - 114: {fileID: 11486108}
   - 64: {fileID: 6454620}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (33)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -656,9 +656,9 @@ GameObject:
   - 33: {fileID: 3345940}
   - 114: {fileID: 11411930}
   - 64: {fileID: 6426588}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (21)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -676,9 +676,9 @@ GameObject:
   - 33: {fileID: 3316398}
   - 114: {fileID: 11400702}
   - 64: {fileID: 6400602}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (6)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -696,9 +696,9 @@ GameObject:
   - 33: {fileID: 3399186}
   - 114: {fileID: 11476966}
   - 64: {fileID: 6400570}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (49)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -716,9 +716,9 @@ GameObject:
   - 33: {fileID: 3368728}
   - 114: {fileID: 11471786}
   - 64: {fileID: 6476598}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (62)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -736,9 +736,9 @@ GameObject:
   - 33: {fileID: 3373412}
   - 114: {fileID: 11498852}
   - 64: {fileID: 6411098}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -756,9 +756,9 @@ GameObject:
   - 33: {fileID: 3382856}
   - 114: {fileID: 11445376}
   - 64: {fileID: 6416956}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (26)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -776,9 +776,9 @@ GameObject:
   - 33: {fileID: 3398358}
   - 114: {fileID: 11428472}
   - 64: {fileID: 6488330}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (53)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -796,9 +796,9 @@ GameObject:
   - 33: {fileID: 3332062}
   - 114: {fileID: 11479440}
   - 64: {fileID: 6459168}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (66)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -816,9 +816,9 @@ GameObject:
   - 33: {fileID: 3347856}
   - 114: {fileID: 11466868}
   - 64: {fileID: 6482972}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (55)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -836,9 +836,9 @@ GameObject:
   - 33: {fileID: 3333924}
   - 114: {fileID: 11445008}
   - 64: {fileID: 6492958}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (13)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -856,9 +856,9 @@ GameObject:
   - 33: {fileID: 3353624}
   - 114: {fileID: 11447566}
   - 64: {fileID: 6483824}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (52)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -876,9 +876,9 @@ GameObject:
   - 33: {fileID: 3344748}
   - 114: {fileID: 11496542}
   - 64: {fileID: 6498504}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (35)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -896,9 +896,9 @@ GameObject:
   - 33: {fileID: 3335628}
   - 114: {fileID: 11417936}
   - 64: {fileID: 6489518}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (63)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -916,9 +916,9 @@ GameObject:
   - 33: {fileID: 3300618}
   - 114: {fileID: 11426908}
   - 64: {fileID: 6431718}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (19)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -936,9 +936,9 @@ GameObject:
   - 33: {fileID: 3390866}
   - 114: {fileID: 11420908}
   - 64: {fileID: 6466124}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (40)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -956,9 +956,9 @@ GameObject:
   - 33: {fileID: 3334258}
   - 114: {fileID: 11430084}
   - 64: {fileID: 6414400}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (61)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -976,9 +976,9 @@ GameObject:
   - 33: {fileID: 3342292}
   - 114: {fileID: 11406454}
   - 64: {fileID: 6472452}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (38)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -996,9 +996,9 @@ GameObject:
   - 33: {fileID: 3338062}
   - 114: {fileID: 11439578}
   - 64: {fileID: 6479748}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (29)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1016,9 +1016,9 @@ GameObject:
   - 33: {fileID: 3341610}
   - 114: {fileID: 11446460}
   - 64: {fileID: 6431328}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (44)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1036,9 +1036,9 @@ GameObject:
   - 33: {fileID: 3326356}
   - 114: {fileID: 11416342}
   - 64: {fileID: 6430086}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (28)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1072,9 +1072,9 @@ GameObject:
   - 33: {fileID: 3371246}
   - 114: {fileID: 11473038}
   - 64: {fileID: 6406194}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (36)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1092,9 +1092,9 @@ GameObject:
   - 33: {fileID: 3337286}
   - 114: {fileID: 11488436}
   - 64: {fileID: 6432224}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (64)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1112,9 +1112,9 @@ GameObject:
   - 33: {fileID: 3325036}
   - 114: {fileID: 11487626}
   - 64: {fileID: 6497164}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Right Angle (2)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1132,9 +1132,9 @@ GameObject:
   - 33: {fileID: 3348258}
   - 114: {fileID: 11467426}
   - 64: {fileID: 6463790}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (24)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1152,9 +1152,9 @@ GameObject:
   - 33: {fileID: 3315824}
   - 114: {fileID: 11421262}
   - 64: {fileID: 6468104}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1172,9 +1172,9 @@ GameObject:
   - 33: {fileID: 3356900}
   - 114: {fileID: 11400970}
   - 64: {fileID: 6491146}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (34)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1192,9 +1192,9 @@ GameObject:
   - 33: {fileID: 3336922}
   - 114: {fileID: 11439772}
   - 64: {fileID: 6427564}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1212,9 +1212,9 @@ GameObject:
   - 33: {fileID: 3302368}
   - 114: {fileID: 11448626}
   - 64: {fileID: 6462880}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (60)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1232,9 +1232,9 @@ GameObject:
   - 33: {fileID: 3325674}
   - 114: {fileID: 11495542}
   - 64: {fileID: 6406974}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (14)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1252,9 +1252,9 @@ GameObject:
   - 33: {fileID: 3338960}
   - 114: {fileID: 11489682}
   - 64: {fileID: 6426738}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1272,9 +1272,9 @@ GameObject:
   - 33: {fileID: 3370602}
   - 114: {fileID: 11470952}
   - 64: {fileID: 6447482}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1292,9 +1292,9 @@ GameObject:
   - 33: {fileID: 3374026}
   - 114: {fileID: 11438424}
   - 64: {fileID: 6434222}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (59)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1344,9 +1344,9 @@ GameObject:
   - 33: {fileID: 3373706}
   - 114: {fileID: 11487162}
   - 64: {fileID: 6422756}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (22)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1364,9 +1364,9 @@ GameObject:
   - 33: {fileID: 3347364}
   - 114: {fileID: 11438370}
   - 64: {fileID: 6481992}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (46)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1384,9 +1384,9 @@ GameObject:
   - 33: {fileID: 3331908}
   - 114: {fileID: 11452472}
   - 64: {fileID: 6489978}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (27)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1404,9 +1404,9 @@ GameObject:
   - 33: {fileID: 3309904}
   - 114: {fileID: 11415166}
   - 64: {fileID: 6479788}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (65)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1424,9 +1424,9 @@ GameObject:
   - 33: {fileID: 3373944}
   - 114: {fileID: 11482826}
   - 64: {fileID: 6438834}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (17)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1444,9 +1444,9 @@ GameObject:
   - 33: {fileID: 3357798}
   - 114: {fileID: 11433172}
   - 64: {fileID: 6413600}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (7)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1484,9 +1484,9 @@ GameObject:
   - 33: {fileID: 3387344}
   - 114: {fileID: 11415164}
   - 64: {fileID: 6461206}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (57)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1504,9 +1504,9 @@ GameObject:
   - 33: {fileID: 3367464}
   - 114: {fileID: 11427740}
   - 64: {fileID: 6468656}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (30)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1524,9 +1524,9 @@ GameObject:
   - 33: {fileID: 3311502}
   - 114: {fileID: 11486288}
   - 64: {fileID: 6424098}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (43)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1544,9 +1544,9 @@ GameObject:
   - 33: {fileID: 3382542}
   - 114: {fileID: 11454956}
   - 64: {fileID: 6473444}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (16)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1564,9 +1564,9 @@ GameObject:
   - 33: {fileID: 3317744}
   - 114: {fileID: 11404738}
   - 64: {fileID: 6453466}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1584,9 +1584,9 @@ GameObject:
   - 33: {fileID: 3311524}
   - 114: {fileID: 11425280}
   - 64: {fileID: 6489454}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (51)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1604,9 +1604,9 @@ GameObject:
   - 33: {fileID: 3305332}
   - 114: {fileID: 11408688}
   - 64: {fileID: 6459244}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Right Angle (1)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1624,9 +1624,9 @@ GameObject:
   - 33: {fileID: 3376496}
   - 114: {fileID: 11479596}
   - 64: {fileID: 6414462}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (41)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1644,9 +1644,9 @@ GameObject:
   - 33: {fileID: 3340330}
   - 114: {fileID: 11486040}
   - 64: {fileID: 6426904}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (15)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1664,9 +1664,9 @@ GameObject:
   - 33: {fileID: 3391058}
   - 114: {fileID: 11489596}
   - 64: {fileID: 6485394}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Cube (45)
-  m_TagString: Untagged
+  m_TagString: LevelGeo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
