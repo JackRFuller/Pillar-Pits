@@ -13,8 +13,14 @@ public class LevelUIManager : MonoBehaviour {
     [Header("Level Timer")]
     public Text[] levelTimerText;
 
+    [System.Serializable]
+    private class targetIcons
+    {
+        public Image[] targetIconImages = new Image[5];
+    }
+
     [Header("Target Objects")]   
-    public Image[] targetIconImages;
+   [SerializeField] private targetIcons[] targetIconImages;
 
     [Header("Reticle")]
     public Image reticleIcon;
@@ -84,14 +90,22 @@ public class LevelUIManager : MonoBehaviour {
     {
         int _targetID = numberOfTargets;
 
-        targetIconImages[_targetID].enabled = false;
+        for(int i = 0; i < targetIconImages.Length; i++)
+        {
+            targetIconImages[i].targetIconImages[_targetID].enabled = false;
+        }
+
+       
     }
 
     public void TurnOnTargets(int _numberOfTargets)
     {
-        for(int i = 0; i < _numberOfTargets; i++)
+        for(int i = 0; i < targetIconImages.Length; i++)
         {
-            targetIconImages[i].enabled = true;
+            for(int j = 0; j < _numberOfTargets; j++)
+            {
+                targetIconImages[i].targetIconImages[j].enabled = true;
+            }
         }
     }
 

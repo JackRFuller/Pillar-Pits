@@ -92,7 +92,7 @@ public class Hookshot : MonoBehaviour {
             {
                 if (numberOfShotsLeft > 0)
                 {
-                    ShootHookShot();
+                    StartCoroutine(ShootHookShot());
                 }
             }
             else
@@ -152,7 +152,7 @@ public class Hookshot : MonoBehaviour {
         }
     }
 
-    void ShootHookShot()
+    IEnumerator ShootHookShot()
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
@@ -166,6 +166,7 @@ public class Hookshot : MonoBehaviour {
                 {
                     if (!hookShotBullets[i].activeInHierarchy)
                     {
+                        yield return StartCoroutine(WaitAndPlayShootingAnimation());
                         currentBullet = hookShotBullets[i];
                          hookShotRB = currentBullet.GetComponent<Rigidbody>();
                         if (hookShotRB.isKinematic)
@@ -188,6 +189,8 @@ public class Hookshot : MonoBehaviour {
                 target = hit.point;
                 bulletDirection = target - currentBullet.transform.position;
                 isBulletMoving = true;
+
+                StartCoroutine(WaitAndPlayHolster());
             }
             else
             {
@@ -195,6 +198,21 @@ public class Hookshot : MonoBehaviour {
             }
         }
     }
+
+    IEnumerator WaitAndPlayShootingAnimation()
+    {
+        SetAnimationState("isShooting");
+        yield return new WaitForSeconds(0.2f);
+    }
+
+    IEnumerator WaitAndPlayHolster()
+    {
+        SetAnimationState("isHolstering");
+        yield return new WaitForSeconds(0.3f);
+        SetAnimationState("isIdle");
+    }
+
+
 
     void MoveBullet()
     {
@@ -250,5 +268,18 @@ public class Hookshot : MonoBehaviour {
         }
 
         currentBullet = null;
+    }
+
+    public void SetAnimationState(string _animParameter)
+    {
+        hookShotAnimation.SetBool(_animParameter, true);
+
+        for (int i = 0; i < hookShotAnimation.parameterCount; i++)
+        {
+            string _parameterName = hookShotAnimation.parameters[i].name;
+
+            if (_parameterName != _animParameter)
+                hookShotAnimation.SetBool(_parameterName, false);
+        }
     }
 }
