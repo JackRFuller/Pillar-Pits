@@ -66,7 +66,8 @@ public class LevelUIManager : MonoBehaviour {
     {
         for(int i = 0; i < levelTimerText.Length; i++)
         {
-            levelTimerText[i].text = _currentTime.ToString("F2");
+            if(levelTimerText[i])
+                levelTimerText[i].text = _currentTime.ToString("F2");
         }
         
     }    
@@ -92,7 +93,8 @@ public class LevelUIManager : MonoBehaviour {
 
         for(int i = 0; i < targetIconImages.Length; i++)
         {
-            targetIconImages[i].targetIconImages[_targetID].enabled = false;
+            if (targetIconImages[i].targetIconImages[_targetID])
+                targetIconImages[i].targetIconImages[_targetID].enabled = false;
         }
 
        
@@ -104,7 +106,9 @@ public class LevelUIManager : MonoBehaviour {
         {
             for(int j = 0; j < _numberOfTargets; j++)
             {
-                targetIconImages[i].targetIconImages[j].enabled = true;
+                if (targetIconImages[i].targetIconImages[j])
+                    targetIconImages[i].targetIconImages[j].enabled = true;
+                else Debug.LogError("No Target Icon!");
             }
         }
     }

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerSetup : MonoBehaviour {
 
+    public bool buildingLevel;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -16,7 +18,8 @@ public class PlayerSetup : MonoBehaviour {
         if(transform.GetChild(0))
             transform.GetChild(0).localRotation = Quaternion.Euler(Vector3.zero);
 
-        transform.position = LevelManager.instance.levelAttributes.startingPlayerPos;
+        if(!buildingLevel)
+            transform.position = LevelManager.instance.levelAttributes.startingPlayerPos;
         //Debug.Log(LevelManager.instance.levelAttributes.startingPlayerRot);
         ////transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
         //    //(LevelManager.instance.levelAttributes.startingPlayerRot);

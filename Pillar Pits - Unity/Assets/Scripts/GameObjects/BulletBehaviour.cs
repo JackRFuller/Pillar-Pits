@@ -66,6 +66,7 @@ public class BulletBehaviour : MonoBehaviour
                 isMoving = false;
                 hasCollided = true;
             }
+           
         }
 
         if (hasCollided)
@@ -79,6 +80,10 @@ public class BulletBehaviour : MonoBehaviour
         if (other.tag == "Target")
         {
             SendDamage(other.gameObject);
+        }
+        else if (other.tag == "ForceField")
+        {
+            TurnOffBullet();
         }
     }
 

@@ -14,6 +14,7 @@ TagManager:
   - explosion
   - Bullet
   - LevelGeo
+  - ForceField
   layers:
   - Default
   - TransparentFX
