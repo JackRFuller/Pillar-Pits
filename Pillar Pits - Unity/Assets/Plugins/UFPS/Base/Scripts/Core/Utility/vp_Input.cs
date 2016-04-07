@@ -169,8 +169,8 @@ public class vp_Input : MonoBehaviour
 				AddButton("Zoom", KeyCode.Mouse1);
 				AddButton("Reload", KeyCode.R);
 				AddButton("Jump", KeyCode.Space);
-				AddButton("Crouch", KeyCode.C);
-				AddButton("Run", KeyCode.LeftShift);
+				AddButton("Crouch", KeyCode.LeftShift);
+				AddButton("Run", KeyCode.C);
 				AddButton("Interact", KeyCode.F);
 				AddButton("Accept1", KeyCode.Return);
 				AddButton("Accept2", KeyCode.KeypadEnter);
